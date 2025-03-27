@@ -170,7 +170,7 @@
 	color: #ccc;
 }
 .services .col-md-3:hover{
-	background-color: #007bff;
+	background-color: #740303;
 	cursor: pointer;
 	transition: 0.7s;
 }
@@ -399,6 +399,10 @@ background-color: red;
 .swiper-slide .imbx img
 {
 	width: 100%;
+	transition: transform 0.3s ease-in-out;
+}
+.swiper-slide .imbx :hover img {
+    transform: scale(1.1);
 }
 .swiper-slide .details
 {
@@ -500,3 +504,60 @@ background-color: red;
 {
 	color: #fff;
 }
+#vd img{
+	height: 90vh;
+	width:100%;
+}
+#vd{
+	background-color: rgb(18, 0, 0);
+}
+#services{
+	background-image: url('saffari.gif'); /* Replace with your actual image path */
+    background-size: cover;  /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repeating */
+    padding: 50px 0; /* Adds spacing */
+    color: white;
+}
+
+
+
+
+html {
+	scroll-behavior: smooth;
+  }
+  .btn:hover {
+	box-shadow: 0 0 10px #007bff, 0 0 20px #007bff, 0 0 40px #007bff;
+	transition: 0.4s;
+  }
+  @keyframes gradientBG {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+  }
+  
+  #swiper {
+	background: linear-gradient(-45deg, #810505, #0d0404, #6d0404, #040e13);
+	background-size: 400% 400%;
+	animation: gradientBG 8s ease infinite;
+  }
+  #services {
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+  }
+  @keyframes fadeIn {
+	from { opacity: 0; transform: translateY(30px); }
+	to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .welcome-msg, .services, .about-container, .testimonial {
+	animation: fadeIn 1s ease-in-out;
+  }
+  .swiper-container {
+	animation: slide-in 1s ease-in-out;
+  }
+  @keyframes slide-in {
+	from { transform: translateX(-50px); opacity: 0; }
+	to { transform: translateX(0); opacity: 1; }
+  }
