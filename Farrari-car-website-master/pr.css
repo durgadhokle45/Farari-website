@@ -177,7 +177,7 @@
 #testimonial
 {
 	background-color: red;
-  background-image: linear-gradient(to right, darkred , black);"
+  background-image: linear-gradient(to right, darkred , black);
 	padding-top:50px;
 	padding-bottom: 50px;
 	color: #555;
@@ -457,11 +457,11 @@ background-color: red;
 {
 	margin-top: 30px;
 }
-.count{
+/* .count{
 
 
-	margin: ;
-}
+	/* margin: ; */
+/* } */ */
 .countd{
 	display: inline-block;
 	margin-left:148px;
