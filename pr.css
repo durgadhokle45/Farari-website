@@ -519,7 +519,15 @@ background-color: red;
     padding: 50px 0; /* Adds spacing */
     color: white;
 }
-
+#soon{
+	background-image: url('to'); /* Replace with your actual image path */
+    background-size: cover;  /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repeating */
+    padding: 50px 0;/* Adds spacing */
+	height: auto;
+    color: white;
+}
 
 
 
@@ -537,6 +545,21 @@ html {
   }
   
   #swiper {
+	background: linear-gradient(-45deg, #810505, #0d0404, #6d0404, #040e13);
+	background-size: 400% 400%;
+	animation: gradientBG 8s ease infinite;
+  }
+
+  #testimonial{
+	background: linear-gradient(-45deg, #810505, #0d0404, #6d0404, #040e13);
+	background-size: 400% 400%;
+	animation: gradientBG 8s ease infinite;
+  }
+  #models{
+	background: linear-gradient(-45deg, #810505, #0d0404, #6d0404, #040e13);
+	background-size: 400% 400%;
+	animation: gradientBG 8s ease infinite;
+  }{
 	background: linear-gradient(-45deg, #810505, #0d0404, #6d0404, #040e13);
 	background-size: 400% 400%;
 	animation: gradientBG 8s ease infinite;
@@ -561,3 +584,85 @@ html {
 	from { transform: translateX(-50px); opacity: 0; }
 	to { transform: translateX(0); opacity: 1; }
   }
+
+
+
+
+  /* --------------------------racer-content---------------------------------------------- */
+
+  /* .racer-details{
+	background-color: #007bff;
+	height: 70vh;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 4fr 4fr 4fr;
+
+  }
+  #Racer-container h2{
+	font-weight: bold;
+	
+  }
+  .racer0{
+	background-color:aquamarine;
+   
+  } */
+
+
+  #Racer-container {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+	background: linear-gradient(-45deg, #810505, #0d0404, #6d0404, #040e13);
+	background-size: 400% 400%;
+	animation: gradientBG 8s ease infinite;
+    padding: 20px 0;
+	
+}
+
+/* Parent Flexbox to Align Children */
+.racer-details {
+    display: flex;
+    justify-content: center;
+    gap: 20px;  /* Space between divs */
+    flex-wrap: wrap;  /* Ensures responsiveness */
+}
+
+/* Racer Div Styling */
+.racer0 {
+    width: 300px;  /* Ensures equal width */
+    height: 400px; /* Ensures equal height */
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.racer0 img {
+    width: 100%;  /* Image takes full width of the container */
+    height: 70%;  /* Adjusts image height */
+    object-fit: cover;  /* Ensures images are cropped properly */
+    border-radius: 10px 10px 0 0; /* Rounded corners on top */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .racer0 {
+        width: 250px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .racer-details {
+        flex-direction: column;  /* Stack on smaller screens */
+        align-items: center;
+    }
+    .racer0 {
+        width: 90%;  /* Full width on small screens */
+        height: auto;
+    }
+}
+
+
+  
