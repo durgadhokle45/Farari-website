@@ -633,8 +633,8 @@ html {
     height: 400px; /* Ensures equal height */
     background: white;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -643,6 +643,45 @@ html {
     height: 70%;  /* Adjusts image height */
     object-fit: cover;  /* Ensures images are cropped properly */
     border-radius: 10px 10px 0 0; /* Rounded corners on top */
+}
+
+
+
+
+
+.racer0 {
+    width: 400px;  /* Equal width */
+    height: 600px; /* Equal height */
+    background: white;
+    display: flex;
+    flex-direction: column; /* Stack image and text */
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden; /* Prevents content overflow */
+    text-align: center; /* Centers text */
+    padding: 10px;
+}
+
+/* Image Styling */
+.racer0 img {
+    width: 100%;  /* Full width of container */
+    height: 25rem;  /* Ensures uniform height */
+    object-fit: cover; /* Ensures image fits without stretching */
+    border-radius: 10px 10px 0 0; /* Rounds top corners */
+}
+
+/* Heading Styling */
+.racer0 h3 {
+    font-size: 18px;
+    margin-top: 10px; /* Adds space between image and text */
+    color: #333;
+}
+
+.racer0 h3 span {
+    font-size: 14px;
+    color: #e60000; /* Ferrari red */
 }
 
 /* Responsive Design */
