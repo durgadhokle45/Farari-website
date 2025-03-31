@@ -759,9 +759,27 @@ html {
     }
 }
 /* ---------------------------------------footer---------------------------------- */
-footer{
+.footer-first{
 	background-color: black;
 	color:#fff;
-	display: grid;
-	grid-template-columns:2.4fr 2.4fr 2.4fr 2.4fr 2.4fr;
+	text-align: center;
+	
+}
+.footer{
+	background-color: black;
+	color:#fff;
+	padding: 20px;
+	text-align:center;
+	display:grid;
+    grid-template-columns: 2.4fr 2.4fr 2.4fr 2.4fr 2.4fr; 
+}
+.footer-title{
+	font-weight: bold;
+	margin-top: 20px;
+	font-family: Arial;
+}
+.footer-title~span{
+	margin-top: 20px;
+	display: block;
+	margin-bottom: 15px;
 }
