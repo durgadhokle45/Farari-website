@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background-color: rgba(47, 45, 45, 0.7);
+            padding: 50px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero-description {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background-color: transparent;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        .btn-circle::after {
+            content: "→";
+            font-size: 14px;
+        }
+
+        /* Slider dots */
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #ff0000;
+        }
+
+        /* Section styles */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Card grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Card styles */
+        .card {
+            position: relative;
+            overflow: hidden;
+            background-color: #111;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .card-date {
+            color: #ff0000;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .card-divider {
+            flex-grow: 1;
+            height: 1px;
+            background-color: #ff0000;
+            margin: 0 10px;
+        }
+
+        .card-category {
+            color: #ff0000;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        /* View all button */
+        .view-all-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+
+        /* Dark section */
+        .section-dark {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 20px 0;
+            border-top: 1px solid #333;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: flex-start;
+            gap: 30px;
+        }
+
+        .footer-link {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #ff0000;
+        }
+
+        .ferrari-logo {
+            width: 30px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .hero-content {
+                width: 50%;
+                padding: 30px;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 100vh;
+                flex-direction: column;
+            }
+
+            .hero-image {
+                height: 60%;
+            }
+
+            .hero-content {
+                position: relative;
+                width: 100%;
+                height: 40%;
+                padding: 20px;
+            }
+
+            .hero-title {
+                font-size: 24px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-nav {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                padding: 15px;
+            }
+
+            .hero-title {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .hero-description {
+                font-size: 12px;
+                margin-bottom: 15px;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+
+            .section-title {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67dd345ba5f0bc00267affc2?width=1920&height=1080" alt="Ferrari F1 Cars Racing" class="hero-image">
+        <div class="hero-content">
+            <h3 class="hero-subtitle">Scuderia</h3>
+            <h2 class="hero-title">A 30 Point Weekend</h2>
+            <p class="hero-description">
+                Shanghai, 23 March 2025 - Scuderia Ferrari HP leaves China with 30 points, the second highest team score of the weekend, although well aware that there is plenty of work to do to close the gap to the leaders.
+            </p>
+            <button class="btn">
+                Read
+                <span class="btn-circle"></span>
+            </button>
+        </div>
+        <div class="slider-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </section>
+
+    <!-- Scuderia Ferrari Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Scuderia Ferrari</h2>
+            <div class="card-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <img src="https://cdn.ferrari.com/cms/network/media/img/resize/668bd8af00058e00114e4d3b-scuderia-ferrari-hp-statement-2024?width=900&height=500" alt="Ferrari and HP Partnership" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-date">23 MAR</span>
+                            <div class="card-divider"></div>
+                            <span class="card-category">SCUDERIA FERRARI, GP</span>
+                        </div>
+                        <h3 class="card-title">Team Statement</h3>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67dfe8e9a38fe40021b10a1d-china-gp-race-report-desk?width=900&height=500" alt="Chinese Grand Prix" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-date">25 MAR</span>
+                            <div class="card-divider"></div>
+                            <span class="card-category">SCUDERIA FERRARI, GP</span>
+                        </div>
+                        <h3 class="card-title">Chinese Grand Prix - A 30 Point Weekend</h3>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67dfc872a91acb00209971a4-ferrari-chinese-gp-2025-race-leclerc-land?width=900&height=500" alt="Ferrari F1 Car" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-date">23 MAR</span>
+                            <div class="card-divider"></div>
+                            <span class="card-category">SCUDERIA FERRARI, GP</span>
+                        </div>
+                        <h3 class="card-title">Chinese Grand Prix - Race Recap: Charles Fifth, Lewis Sixth</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-container">
+                <button class="btn">
+                    View All
+                    <span class="btn-circle"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hypercar Section -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Hypercar</h2>
+            <div class="card-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67dd345d8f97e000200a6279-ferrari-hypercar-wec-qatar-2025-victory-full-access-video-news-desk?width=900&height=500" alt="Ferrari Hypercar in Qatar" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-date">22 MAR</span>
+                            <div class="card-divider"></div>
+                            <span class="card-category">HYPERCAR</span>
+                        </div>
+                        <h3 class="card-title">Relive the 1812 km of Qatar 2025 with "Full Access: The Red Line"</h3>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67c24833c77e3b005697343f-2025-qatar-lmh-race-news-l?width=900&height=500" alt="Ferrari Team in Qatar" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-date">01 MAR</span>
+                            <div class="card-divider"></div>
+                            <span class="card-category">HYPERCAR</span>
+                        </div>
+                        <h3 class="card-title">Historic Ferrari One-Two-Three in Qatar</h3>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67c0a6e504eb3a0011d7605b-2025-wec-lmh-news-land?width=900&height=500" alt="Ferrari Drivers" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-date">27 FEB</span>
+                            <div class="card-divider"></div>
+                            <span class="card-category">HYPERCAR</span>
+                        </div>
+                        <h3 class="card-title">Ferrari on Pole Position at the 1812 km of Qatar</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-container">
+                <button class="btn">
+                    View All
+                    <span class="btn-circle"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+      <!-- Hypercar Section -->
+      <section class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Hypercar</h2>
+            <div class="card-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <img src="https://cdn.ferrari.com/cms/network/media/img/resize/6710bc20dcd6130010c35181-ferrari-f80-land?width=900&height=500" alt="Ferrari Hypercar in Qatar" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-date">22 MAR</span>
+                            <div class="card-divider"></div>
+                            <span class="card-category">HYPERCAR</span>
+                        </div>
+                        <h3 class="card-title">Relive the 1812 km of Qatar 2025 with "Full Access: The Red Line"</h3>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card">
+                    <img src="https://cdn.ferrari.com/cms/network/media/img/resize/670526acc0d97b00116d7534?width=900&height=500" alt="Ferrari Team in Qatar" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-date">01 MAR</span>
+                            <div class="card-divider"></div>
+                            <span class="card-category">HYPERCAR</span>
+                        </div>
+                        <h3 class="card-title">Historic Ferrari One-Two-Three in Qatar</h3>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card">
+                    <img src="https://cdn.ferrari.com/cms/network/media/img/resize/6710bc20dcd6130010c35181-ferrari-f80-land?width=900&height=500" alt="Ferrari Drivers" class="card-image">
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span class="card-date">27 FEB</span>
+                            <div class="card-divider"></div>
+                            <span class="card-category">HYPERCAR</span>
+                        </div>
+                        <h3 class="card-title">Ferrari on Pole Position at the 1812 km of Qatar</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-container">
+                <button class="btn">
+                    View All
+                    <span class="btn-circle"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+  <!-- Hypercar Section -->
+  <section class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">Hypercar</h2>
+        <div class="card-grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67bc490fc948ab00101ac31a-ferrari-musei-supercar-exhibition-2025-cover-desk?width=900&height=500" alt="Ferrari Hypercar in Qatar" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">22 MAR</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Relive the 1812 km of Qatar 2025 with "Full Access: The Red Line"</h3>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://cdn.ferrari.com/cms/network/media/img/resize/676146a0a7e3540011b202f7-ferrari_asphalt_series_finals_2024?width=900&height=500" alt="Ferrari Team in Qatar" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">01 MAR</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Historic Ferrari One-Two-Three in Qatar</h3>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67541f2ac8aa1b00106eb746-ferrari-hp-esports-series-2024-champion-luke-whitehead?width=900&height=500" alt="Ferrari Drivers" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">27 FEB</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Ferrari on Pole Position at the 1812 km of Qatar</h3>
+                </div>
+            </div>
+        </div>
+        <div class="view-all-container">
+            <button class="btn">
+                View All
+                <span class="btn-circle"></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Hypercar Section -->
+<section class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">Hypercar</h2>
+        <div class="card-grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67e95542bfa4f70020866b09-300325_toppix_mezzamaratona_enzo_ferrari_001?width=900&height=500" alt="Ferrari Hypercar in Qatar" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">22 MAR</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Relive the 1812 km of Qatar 2025 with "Full Access: The Red Line"</h3>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://cdn.ferrari.com/cms/network/media/img/resize/6788e0b7a7e3540011b20597-unicredit-ferrari-2025-news?width=900&height=500" alt="Ferrari Team in Qatar" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">01 MAR</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Historic Ferrari One-Two-Three in Qatar</h3>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="https://www.ferrari.com/media-centre/static/assets/img/placeholder.jpg" alt="Ferrari Drivers" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">27 FEB</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Ferrari on Pole Position at the 1812 km of Qatar</h3>
+                </div>
+            </div>
+        </div>
+        <div class="view-all-container">
+            <button class="btn">
+                View All
+                <span class="btn-circle"></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Hypercar Section -->
+<section class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">Hypercar</h2>
+        <div class="card-grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67eac472b2738c0020912051-2025-ferrari-weekend-notebook-paul-ricard-desk?width=900&height=500" alt="Ferrari Hypercar in Qatar" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">22 MAR</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Relive the 1812 km of Qatar 2025 with "Full Access: The Red Line"</h3>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67e6c4caa5f0bc00267b0202-weekend-preview-usa-eu-news-land?width=900&height=500" alt="Ferrari Team in Qatar" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">01 MAR</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Historic Ferrari One-Two-Three in Qatar</h3>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67e186a9bfa4f700208669b6-2025-ferrari-12h-mugello-desk?width=900&height=500" alt="Ferrari Drivers" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">27 FEB</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Ferrari on Pole Position at the 1812 km of Qatar</h3>
+                </div>
+            </div>
+        </div>
+        <div class="view-all-container">
+            <button class="btn">
+                View All
+                <span class="btn-circle"></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Hypercar Section -->
+<section class="section section-dark">
+    <div class="container">
+        <h2 class="section-title">Hypercar</h2>
+        <div class="card-grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67e991bcb2738c0020912005-2025-ferrari-ccl-monza-race2-news-land?width=900&height=500" alt="Ferrari Hypercar in Qatar" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">22 MAR</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Relive the 1812 km of Qatar 2025 with "Full Access: The Red Line"</h3>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67e84905bfa4f70020866ad3-2025-renmans-fontana-ccl-monza-news-l?width=900&height=500" alt="Ferrari Team in Qatar" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">01 MAR</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Historic Ferrari One-Two-Three in Qatar</h3>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="https://cdn.ferrari.com/cms/network/media/img/resize/67e7db14a38fe40021b10bbc-2025-ferrari-ccl-eu-monza-news-land?width=900&height=500" alt="Ferrari Drivers" class="card-image">
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span class="card-date">27 FEB</span>
+                        <div class="card-divider"></div>
+                        <span class="card-category">HYPERCAR</span>
+                    </div>
+                    <h3 class="card-title">Ferrari on Pole Position at the 1812 km of Qatar</h3>
+                </div>
+            </div>
+        </div>
+        <div class="view-all-container">
+            <button class="btn">
+                View All
+                <span class="btn-circle"></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-nav">
+                <svg class="ferrari-logo" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15,3C8.4,3,3,8.4,3,15s5.4,12,12,12s12-5.4,12-12S21.6,3,15,3z M22,20c-0.3,0.4-0.6,0.7-1,0.9c-0.4,0.2-0.8,0.3-1.2,0.3c-0.4,0-0.8-0.1-1.2-0.3c-0.4-0.2-0.7-0.5-1-0.9c-0.2-0.4-0.3-0.8-0.3-1.2c0-0.4,0.1-0.8,0.3-1.2c0.2-0.4,0.5-0.7,0.9-0.9c0.4-0.2,0.8-0.3,1.2-0.3c0.4,0,0.8,0.1,1.2,0.3c0.4,0.2,0.7,0.5,0.9,0.9c0.2,0.4,0.3,0.8,0.3,1.2C22.3,19.2,22.2,19.6,22,20z M19.8,12.8c-0.4,0.2-0.8,0.3-1.2,0.3c-0.4,0-0.8-0.1-1.2-0.3c-0.4-0.2-0.7-0.5-0.9-0.9c-0.2-0.4-0.3-0.8-0.3-1.2c0-0.4,0.1-0.8,0.3-1.2c0.2-0.4,0.5-0.7,0.9-0.9c0.4-0.2,0.8-0.3,1.2-0.3c0.4,0,0.8,0.1,1.2,0.3c0.4,0.2,0.7,0.5,0.9,0.9c0.2,0.4,0.3,0.8,0.3,1.2c0,0.4-0.1,0.8-0.3,1.2C20.5,12.3,20.2,12.6,19.8,12.8z M15,21c-0.7,0-1.3-0.2-1.8-0.5c-0.5-0.3-0.9-0.8-1.2-1.3c-0.3-0.5-0.4-1.1-0.4-1.8c0-0.6,0.1-1.2,0.4-1.8c0.3-0.5,0.7-1,1.2-1.3c0.5-0.3,1.1-0.5,1.8-0.5c0.6,0,1.2,0.2,1.8,0.5c0.5,0.3,0.9,0.8,1.2,1.3c0.3,0.5,0.4,1.1,0.4,1.8c0,0.6-0.1,1.2-0.4,1.8c-0.3,0.5-0.7,1-1.2,1.3C16.3,20.8,15.7,21,15,21z M11.2,12.8c-0.4-0.2-0.7-0.5-0.9-0.9c-0.2-0.4-0.3-0.8-0.3-1.2c0-0.4,0.1-0.8,0.3-1.2c0.2-0.4,0.5-0.7,0.9-0.9c0.4-0.2,0.8-0.3,1.2-0.3c0.4,0,0.8,0.1,1.2,0.3c0.4,0.2,0.7,0.5,0.9,0.9c0.2,0.4,0.3,0.8,0.3,1.2c0,0.4-0.1,0.8-0.3,1.2c-0.2,0.4-0.5,0.7-0.9,0.9c-0.4,0.2-0.8,0.3-1.2,0.3C12,13.1,11.6,13,11.2,12.8z M8,20c-0.2-0.4-0.3-0.8-0.3-1.2c0-0.4,0.1-0.8,0.3-1.2c0.2-0.4,0.5-0.7,0.9-0.9c0.4-0.2,0.8-0.3,1.2-0.3c0.4,0,0.8,0.1,1.2,0.3c0.4,0.2,0.7,0.5,0.9,0.9c0.2,0.4,0.3,0.8,0.3,1.2c0,0.4-0.1,0.8-0.3,1.2c-0.2,0.4-0.5,0.7-0.9,0.9c-0.4,0.2-0.8,0.3-1.2,0.3c-0.4,0-0.8-0.1-1.2-0.3C8.5,20.7,8.2,20.4,8,20z" fill="#fff"/>
+                </svg>
+                <a href="#" class="footer-link">Racing</a>
+                <a href="#" class="footer-link">Sports Cars</a>
+                <a href="#" class="footer-link">Collections</a>
+                <a href="#" class="footer-link">Experiences</a>
+                <a href="#" class="footer-link">About Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Slider functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dots = document.querySelectorAll('.dot');
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    // Remove active class from all dots
+                    dots.forEach(d => d.classList.remove('active'));
+                    
+                    // Add active class to clicked dot
+                    dot.classList.add('active');
+                    
+                    // Here you would normally change the slide
+                    // For this example, we'll just change the hero image
+                    const heroImage = document.querySelector('.hero-image');
+                    
+                    // Simulate changing images (in a real implementation, you'd have multiple images)
+                    heroImage.style.opacity = '0.8';
+                    setTimeout(() => {
+                        heroImage.style.opacity = '1';
+                    }, 300);
+                });
+            });
+            
+            // Read button functionality
+            const readBtn = document.querySelector('.hero .btn');
+            readBtn.addEventListener('click', () => {
+                alert('Read more about: A 30 Point Weekend');
+            });
+            
+            // View All buttons functionality
+            const viewAllBtns = document.querySelectorAll('.view-all-container .btn');
+            viewAllBtns.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    const section = index === 0 ? 'Scuderia Ferrari' : 'Hypercar';
+                    alert(`View all articles in ${section} section`);
+                });
+            });
+            
+            // Card hover effect
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.querySelector('.card-title').textContent;
+                    alert(`You clicked on: ${title}`);
+                });
+            });
+            
+            // Responsive navigation for small screens
+            function handleResize() {
+                const width = window.innerWidth;
+                const footerNav = document.querySelector('.footer-nav');
+                
+                if (width <= 768) {
+                    footerNav.style.flexWrap = 'wrap';
+                } else {
+                    footerNav.style.flexWrap = 'nowrap';
+                }
+            }
+            
+            // Initial call and event listener for resize
+            handleResize();
+            window.addEventListener('resize', handleResize);
+        });
+    </script>
+</body>
+</html>

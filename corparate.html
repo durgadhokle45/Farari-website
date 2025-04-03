@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Layout */
+        .section {
+            display: flex;
+            flex-direction: row;
+            min-height: 80vh;
+            position: relative;
+            width: 100%;
+        }
+
+        .section-content {
+            flex: 1;
+            padding: 5% 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-image {
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Section Specific Styles */
+        .section-number {
+            position: absolute;
+            top: 10%;
+            left: 8%;
+            color: #FF2800;
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-number::before {
+            content: "";
+            height: 1px;
+            width: 30px;
+            background-color: #FF2800;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .section-title {
+            color: #FF2800;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MApjO0MLHvOvA6PJ6cMjveQJ6yX5jF.png');
+            background-size: cover;
+            background-position: top center;
+            height: 50vh;
+            position: relative;
+        }
+
+        /* Ferrari DNA Section */
+        #ferrari-dna .section-image {
+            background-image: url('img/img1.avif');
+            background-position: center right;
+           
+        }
+
+        /* Governance Section */
+        #governance {
+            flex-direction: row-reverse;
+        }
+
+        #governance .section-image {
+            background-image: url('https://cdn.ferrari.com/cms/network/media/img/resize/61f3f0f269f53d65a526ce0b-ferrari-corporate-governance-split-home-desk?width=960&height=650');
+            background-position: center;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            border: 1px solid #333;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .btn:hover {
+            background-color: #FF2800;
+            color: white;
+            border-color: #FF2800;
+        }
+
+        .btn i {
+            margin-left: 10px;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background-color: #000;
+            color: white;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            text-align: left;
+           
+        }
+
+        .nav-links a:hover {
+            color: #FF2800;
+        }
+
+        .ferrari-logo {
+            width: 30px;
+            height: auto;
+        }
+
+        /* Footer */
+        .footer-nav {
+            background-color: transparent;
+            color: white;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: right;
+        }
+
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-left: 40px;
+        }
+
+        .footer-links a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Key Metrics Section */
+        .key-metrics {
+            background-color: #000;
+            color: white;
+            padding: 5% 8%;
+            text-align: center;
+        }
+
+        .key-metrics h2 {
+            margin-bottom: 3rem;
+        }
+
+        .metrics-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .metric {
+            margin: 1rem;
+            min-width: 200px;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .social-icons a {
+            color: white;
+            margin-left: 15px;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            opacity: 1;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .section {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .section-content, .section-image {
+                width: 100%;
+            }
+
+            .section-image {
+                height: 50vh;
+            }
+
+            #governance {
+                flex-direction: column;
+            }
+
+            .metrics-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .metric {
+                margin: 1.5rem 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateY(-100%);
+                transition: transform 0.4s ease;
+            }
+
+            .mobile-menu.active {
+                transform: translateY(0);
+            }
+
+            .mobile-menu-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .mobile-menu ul {
+                list-style: none;
+                text-align: center;
+            }
+
+            .mobile-menu li {
+                margin: 1.5rem 0;
+            }
+
+            .mobile-menu a {
+                color: white;
+                text-decoration: none;
+                font-size: 1.2rem;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .footer-links li {
+                margin: 0.5rem;
+            }
+
+            .social-icons {
+                margin-top: 1rem;
+            }
+        }
+
+        /* financial event  */
+        .containerr {
+            width: 100%;
+            text-align: center;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .containerr h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .containerr p {
+            font-size: 18px;
+            color: #555;
+        }
+        .containerr .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn:hover {
+            background-color: #444;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .btn {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+        /* offcial ferrari  */
+        .container1 {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+             width: 97%;
+            margin: auto;
+            padding: 20px;
+        }
+        .text-content1 {
+            flex: 1;
+            padding: 20px;
+            max-width: 50%;
+        }
+        .text-content1 h1 {
+            font-size: 32px;
+            color: black;
+        }
+        .text-content1 p {
+            font-size: 18px;
+            color: #555;
+        }
+        .image-content1 {
+            flex: 1;
+            height: 100%;
+            width: 100%;
+        }
+        .image-content1 img {
+            width: 100%;
+            border-radius: 10px;
+            height: 100%;
+        }
+        .button1 {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: black;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background: #555;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .text-content, .image-content {
+                max-width: 100%;
+            }
+        }
+
+        /* letest press  */
+        .container2 {
+            width: 80%;
+            font-family: Arial, sans-serif;
+            margin: 20px auto;
+            text-align: left;
+        }
+        .container2 h2 {
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .press-releases {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .press-item {
+            width: 30%;
+            background: #fff;
+            padding: 15px;
+          
+          
+        }
+        .press-item h3 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .date {
+            color: red;
+            font-weight: bold;
+        }
+        .category {
+            color: red;
+            text-transform: uppercase;
+            font-size: 19px;
+        }
+        .read-more, .pdf-download {
+            color: gray;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+        .pdf-download::before {
+            content: '\2B07';
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .view-all {
+            margin-top: 20px;
+            display: inline-block;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="logo">
+            <svg class="ferrari-logo" viewBox="0 0 512 512" fill="white">
+                <!-- <path d="M384,64c0,35.3-28.7,64-64,64s-64-28.7-64-64s28.7-64,64-64S384,28.7,384,64z M256,448c-35.3,0-64-28.7-64-64s28.7-64,64-64s64,28.7,64,64S291.3,448,256,448z M384,256c0,35.3-28.7,64-64,64s-64-28.7-64-64s28.7-64,64-64S384,220.7,384,256z M128,256c0,35.3-28.7,64-64,64s-64-28.7-64-64s28.7-64,64-64S128,220.7,128,256z M128,64c0,35.3-28.7,64-64,64S0,99.3,0,64S28.7,0,64,0S128,28.7,128,64z M128,448c0,35.3-28.7,64-64,64s-64-28.7-64-64s28.7-64,64-64S128,412.7,128,448z M512,256c0,35.3-28.7,64-64,64s-64-28.7-64-64s28.7-64,64-64S512,220.7,512,256z M512,64c0,35.3-28.7,64-64,64s-64-28.7-64-64s28.7-64,64-64S512,28.7,512,64z M512,448c0,35.3-28.7,64-64,64s-64-28.7-64-64s28.7-64,64-64S512,412.7,512,448z"/> -->
+            </svg>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Racing</a></li>
+            <li><a href="#">Sports Cars</a></li>
+            <li><a href="#">Collections</a></li>
+            <li><a href="#">Experiences</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+    <!-- Hero Section with Speedometer Background -->
+    <div class="hero">
+
+        <!-- Footer Navigation -->
+    <nav class="footer-nav">
+        <div style="font-size: 20px;">☰ CORPORATE</div>
+        <ul class="footer-links">
+            <li><a href="#">Investors</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+      
+    </nav>
+    </div>
+
+    <!-- Ferrari DNA Section -->
+    <section id="ferrari-dna" class="section">
+        <div class="section-number">1</div>
+        <div class="section-content">
+            <div class="section-title">ABOUT US</div>
+            <h1>FERRARI DNA</h1>
+            <p>Born of the spirit of racing, Ferrari epitomises the power of a lifelong passion and the beauty of timeless human achievement, creating timeless icons for a changing world.</p>
+            <a href="#" class="btn">DISCOVER MORE <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="section-image"></div>
+    </section>
+
+    <!-- Governance Section -->
+    <section id="governance" class="section">
+        <div class="section-number">2</div>
+        <div class="section-content">
+            <div class="section-title">CORPORATE GOVERNANCE</div>
+            <h1>CORPORATE GOVERNANCE</h1>
+            <p>Ferrari's governance model is based on transparency and integrity, in the pursuit of long-term value creation.</p>
+            <a href="#" class="btn">DISCOVER MORE <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="section-image"></div>
+    </section>
+
+    <!-- Key Metrics Section -->
+    <section class="key-metrics">
+        <h2>KEY METRICS FY 2024</h2>
+        <div class="metrics-container">
+            <div class="metric">
+                <div class="metric-value">€6.7 <span style="font-size: 1.2rem;">Bn</span></div>
+                <div class="metric-label">NET REVENUES</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">€2.6 <span style="font-size: 1.2rem;">Bn</span></div>
+                <div class="metric-label">ADJUSTED EBITDA</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">€1 <span style="font-size: 1.2rem;">Bn</span></div>
+                <div class="metric-label">FREE CASH FLOW FROM INDUSTRIAL ACTIVITIES</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">€1.6 <span style="font-size: 1.2rem;">Bn</span></div>
+                <div class="metric-label">EXPENSED R&D AND CAPEX</div>
+            </div>
+        </div>
+        <a href="#" class="btn" style="color: white; border-color: white; margin: 0 auto;">DISCOVER MORE <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <!-- fianacial even  -->
+    <div class="containerr">
+     
+        <p>Financial events</p>
+        <h1>GROUP RESULTS FOR 4TH QUARTER AND FULL-YEAR 2024</h1>
+        <p>Tuesday, 4 February 2025</p>
+        <p>2:00 p.m. GMT / 3:00 p.m. CET / 9:00 a.m. EST</p>
+        <div class="buttons">
+            <button class="btn" onclick="showAlert('Instructions')">INSTRUCTIONS</button>
+            <button class="btn" onclick="showAlert('Webcast')">WEBCAST</button>
+        </div>
+    </div>
+    
+    <!-- official ferrari  -->
+    <div class="container1">
+       
+        <div class="text-content1">
+            <h1>SUSTAINABILITY JOURNEY</h1>
+            <p>Ferrari's sustainability strategy is based on five key pillars and the commitment to reach carbon neutrality by 2030.</p>
+            <a href="#" class="button1">TO LEARN MORE →</a>
+        </div>
+        <div class="image-content1">
+            <img src="https://cdn.ferrari.com/cms/network/media/img/resize/61f7e903abb7a42a00a8ba58-ferrari-corporate-sustainability-strategy-split-desk-new?width=960&height=650" alt="Sustainability Image">
+        </div>
+    </div>
+    <!-- letest press  -->
+    <div class="container">
+        <h2>LATEST PRESS RELEASES</h2>
+        <div class="press-releases">
+            <div class="press-item">
+                <p class="date">27 MAR</p>
+                <p class="category">Corporate and Financial</p>
+                <h3>Ferrari: Commercial Policy Update</h3>
+                <a href="#" class="read-more">Read More</a>
+                <a href="#" class="pdf-download">PDF</a>
+            </div>
+            <div class="press-item">
+                <p class="date">17 MAR</p>
+                <p class="category">Corporate and Financial</p>
+                <h3>Ferrari N.V.: Report on the Share Buyback Related to Granting Share Process</h3>
+                <a href="#" class="read-more">Read More</a>
+                <a href="#" class="pdf-download">PDF</a>
+            </div>
+            <div class="press-item">
+                <p class="date">07 MAR</p>
+                <p class="category">Corporate and Financial</p>
+                <h3>Ferrari N.V.: Completion of the Seventh Tranche of the Multi-Year Share Repurchase Program</h3>
+                <a href="#" class="read-more">Read More</a>
+                <a href="#" class="pdf-download">PDF</a>
+            </div>
+        </div>
+        <a href="#" class="view-all">View All Press Releases →</a>
+    </div>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for Animations
+        const sections = document.querySelectorAll('.section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+        function showAlert(type) {
+            alert(type + ' button clicked');
+        }
+    </script>
+</body>
+</html>
