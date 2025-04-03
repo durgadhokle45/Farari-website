@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari Sports Cars | Official Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --ferrari-red: #e32121;
+            --ferrari-yellow: #ffd700;
+            --dark-gray: #333;
+            --light-gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--ferrari-red);
+        }
+
+        .nav-links li.active a {
+            color: var(--ferrari-red);
+            font-weight: bold;
+        }
+
+        .nav-links li.active::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--ferrari-red);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--ferrari-red);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid var(--ferrari-red);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--ferrari-red);
+        }
+
+        /* Models Section */
+        .models-section {
+            padding: 100px 5%;
+            background-color: var(--dark-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--ferrari-red);
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .model-card {
+            background-color: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .model-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .model-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .model-card:hover .model-image img {
+            transform: scale(1.1);
+        }
+
+        .model-info {
+            padding: 20px;
+        }
+
+        .model-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--ferrari-yellow);
+        }
+
+        .model-info p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+            color: #ccc;
+        }
+
+        .model-specs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .spec-item {
+            text-align: center;
+        }
+
+        .spec-item i {
+            color: var(--ferrari-red);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .spec-item span {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .model-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .model-links {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .model-links a {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .configure-btn {
+            background-color: var(--ferrari-red);
+            margin-right: 10px;
+        }
+
+        .configure-btn:hover {
+            background-color: #c11a1a;
+        }
+
+        .details-btn {
+            background-color: #444;
+        }
+
+        .details-btn:hover {
+            background-color: #555;
+        }
+
+        /* Configurator Section */
+        .configurator-section {
+            padding: 100px 5%;
+            background-color: #111;
+            text-align: center;
+        }
+
+        .configurator-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .configurator-preview {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            background-color: #222;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .car-3d-model {
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            transition: all 0.5s;
+        }
+
+        .configurator-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .option-group {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+        }
+
+        .option-group h4 {
+            color: var(--ferrari-yellow);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .color-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .color-option.selected {
+            border-color: white;
+            transform: scale(1.1);
+        }
+
+        .wheel-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .wheel-option {
+            padding: 8px;
+            background-color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 0.8rem;
+            transition: background-color 0.3s;
+        }
+
+        .wheel-option:hover {
+            background-color: #444;
+        }
+
+        .wheel-option.selected {
+            background-color: var(--ferrari-red);
+            color: white;
+        }
+
+        .interior-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .interior-option {
+            padding: 8px;
+            background-color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 0.8rem;
+            transition: background-color 0.3s;
+        }
+
+        .interior-option:hover {
+            background-color: #444;
+        }
+
+        .interior-option.selected {
+            background-color: var(--ferrari-red);
+            color: white;
+        }
+
+        .configurator-summary {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+
+        .summary-title {
+            color: var(--ferrari-yellow);
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .summary-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .summary-item {
+            margin-bottom: 10px;
+            flex: 0 0 48%;
+        }
+
+        .summary-item span:first-child {
+            color: #aaa;
+            margin-right: 10px;
+        }
+
+        .summary-total {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* MyFerrari Section */
+        .myferrari-section {
+            padding: 100px 5%;
+            background-color: var(--dark-gray);
+            text-align: center;
+        }
+
+        .myferrari-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #222;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .myferrari-container h2 {
+            margin-bottom: 30px;
+            color: var(--ferrari-yellow);
+        }
+
+        .myferrari-container p {
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #aaa;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            margin-right: 10px;
+        }
+
+        .forgot-password {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password:hover {
+            color: var(--ferrari-red);
+        }
+
+        /* Pre-owned Section */
+        .preowned-section {
+            padding: 100px 5%;
+            background-color: #111;
+        }
+
+        .filter-bar {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .search-btn {
+            background-color: var(--ferrari-red);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            align-self: flex-end;
+            transition: background-color 0.3s;
+        }
+
+        .search-btn:hover {
+            background-color: #c11a1a;
+        }
+
+        /* Dealers Section */
+        .dealers-section {
+            padding: 100px 5%;
+            background-color: var(--dark-gray);
+        }
+
+        .dealer-map {
+            height: 500px;
+            background-color: #222;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+            color: #aaa;
+        }
+
+        .dealer-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .dealer-card {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .dealer-card h3 {
+            color: var(--ferrari-yellow);
+            margin-bottom: 10px;
+        }
+
+        .dealer-info {
+            margin-bottom: 15px;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .dealer-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--ferrari-red);
+        }
+
+        /* Recall Section */
+        .recall-section {
+            padding: 100px 5%;
+            background-color: #111;
+        }
+
+        .recall-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #222;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .recall-container h2 {
+            margin-bottom: 20px;
+            color: var(--ferrari-yellow);
+        }
+
+        .recall-container p {
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .vin-check {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .vin-check input {
+            flex: 1;
+            padding: 12px;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .vin-check button {
+            background-color: var(--ferrari-red);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .vin-check button:hover {
+            background-color: #c11a1a;
+        }
+
+        .recall-list {
+            margin-top: 30px;
+        }
+
+        .recall-item {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .recall-item h4 {
+            color: var(--ferrari-red);
+            margin-bottom: 10px;
+        }
+
+        .recall-item p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .recall-date {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Tech Info Section */
+        .techinfo-section {
+            padding: 100px 5%;
+            background-color: var(--dark-gray);
+        }
+
+        .tech-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #444;
+        }
+
+        .tech-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            color: #aaa;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .tech-tab.active {
+            color: var(--ferrari-red);
+        }
+
+        .tech-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--ferrari-red);
+        }
+
+        .tech-content {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 0 10px 10px 10px;
+        }
+
+        .tech-panel {
+            display: none;
+        }
+
+        .tech-panel.active {
+            display: block;
+        }
+
+        .tech-panel h3 {
+            color: var(--ferrari-yellow);
+            margin-bottom: 20px;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .specs-table th, .specs-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        .specs-table th {
+            color: var(--ferrari-yellow);
+            font-weight: normal;
+        }
+
+        .specs-table td {
+            color: #ccc;
+        }
+
+        .downloads {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .download-item {
+            flex: 0 0 calc(33.333% - 10px);
+            background-color: #333;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .download-icon {
+            margin-right: 15px;
+            color: var(--ferrari-red);
+            font-size: 1.5rem;
+        }
+
+        .download-info h4 {
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .download-info p {
+            color: #aaa;
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 60px 5% 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--ferrari-yellow);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--ferrari-red);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            background-color: #333;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--ferrari-red);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: #777;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .legal-links a:hover {
+            color: var(--ferrari-red);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--ferrari-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #c11a1a;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu .nav-links {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mobile-menu .nav-links li {
+            margin: 15px 0;
+        }
+
+        .mobile-menu .nav-links a {
+            font-size: 1.5rem;
+        }
+
+        .close-menu-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .models-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .download-item {
+                flex: 0 0 calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .configurator-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .option-group {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .summary-item {
+                flex: 0 0 100%;
+            }
+            
+            .download-item {
+                flex: 0 0 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .model-specs {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .remember-me {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .legal-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <img src="https://www.ferrari.com/static/favicon-32x32.png" alt="Ferrari Logo" class="logo">
+            <nav>
+                <ul class="nav-links">
+                    <li class="active"><a href="#range">Range</a></li>
+                    <li><a href="#configurator">Configure</a></li>
+                    <li><a href="#myferrari">MyFerrari</a></li>
+                    <li><a href="#preowned">Pre-owned</a></li>
+                    <li><a href="#dealers">Dealers</a></li>
+                    <li><a href="#recall">Recall Info</a></li>
+                    <li><a href="#techinfo">Tech Info</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu-btn" id="closeMenuBtn">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="nav-links">
+            <li class="active"><a href="#range">Range</a></li>
+            <li><a href="#configurator">Configure</a></li>
+            <li><a href="#myferrari">MyFerrari</a></li>
+            <li><a href="#preowned">Pre-owned</a></li>
+            <li><a href="#dealers">Dealers</a></li>
+            <li><a href="#recall">Recall Info</a></li>
+            <li><a href="#techinfo">Tech Info</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content fade-in">
+            <h1>Ferrari Sports Cars</h1>
+            <p class="delay-1">Experience the pinnacle of Italian engineering and design with our exclusive range of high-performance sports cars. Each Ferrari is a masterpiece of power, precision, and passion.</p>
+            <a href="#range" class="cta-button delay-2">Explore Models</a>
+        </div>
+    </section>
+
+    <!-- Range Section -->
+    <section class="models-section" id="range">
+        <div class="section-title fade-in">
+            <h2>Our Range</h2>
+        </div>
+        <div class="models-grid">
+            <!-- SF90 Stradale -->
+            <div class="model-card fade-in">
+                <div class="model-image">
+                    <img src="https://images.unsplash.com/photo-1621397380746-22bbd39a6f69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari SF90 Stradale">
+                </div>
+                <div class="model-info">
+                    <h3>SF90 Stradale</h3>
+                    <p>The SF90 Stradale is Ferrari's first series production PHEV (Plug-in Hybrid Electric Vehicle), unleashing unprecedented performance.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>0-100 km/h: 2.5s</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>1000 CV</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-car"></i>
+                            <span>Hybrid</span>
+                        </div>
+                    </div>
+                    <div class="model-price">From $625,000</div>
+                    <div class="model-links">
+                        <a href="#configurator" class="configure-btn">Configure</a>
+                        <a href="#" class="details-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 296 GTB -->
+            <div class="model-card fade-in delay-1">
+                <div class="model-image">
+                    <img src="https://images.unsplash.com/photo-1663828288513-06a060d55515?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari 296 GTB">
+                </div>
+                <div class="model-info">
+                    <h3>296 GTB</h3>
+                    <p>The 296 GTB redefines the whole concept of fun behind the wheel, guaranteeing pure emotions not just when pushing the car to its limits.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>0-100 km/h: 2.9s</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>830 CV</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-car"></i>
+                            <span>Hybrid</span>
+                        </div>
+                    </div>
+                    <div class="model-price">From $321,400</div>
+                    <div class="model-links">
+                        <a href="#configurator" class="configure-btn">Configure</a>
+                        <a href="#" class="details-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- F8 Tributo -->
+            <div class="model-card fade-in delay-2">
+                <div class="model-image">
+                    <img src="https://images.unsplash.com/photo-1621397380639-9e8c313a9a10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari F8 Tributo">
+                </div>
+                <div class="model-info">
+                    <h3>F8 Tributo</h3>
+                    <p>The F8 Tributo is the new mid-rear-engined sports car that represents the highest expression of the Prancing Horse's classic two-seater berlinetta.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>0-100 km/h: 2.9s</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>720 CV</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>V8 Turbo</span>
+                        </div>
+                    </div>
+                    <div class="model-price">From $276,550</div>
+                    <div class="model-links">
+                        <a href="#configurator" class="configure-btn">Configure</a>
+                        <a href="#" class="details-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roma -->
+            <div class="model-card fade-in">
+                <div class="model-image">
+                    <img src="https://images.unsplash.com/photo-1621397380716-73e4b156b912?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari Roma">
+                </div>
+                <div class="model-info">
+                    <h3>Roma</h3>
+                    <p>The Roma, a contemporary 2+ coupe featuring refined proportions and timeless design, represents the pinnacle of performance in this category.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>0-100 km/h: 3.4s</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>620 CV</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>V8 Turbo</span>
+                        </div>
+                    </div>
+                    <div class="model-price">From $247,310</div>
+                    <div class="model-links">
+                        <a href="#configurator" class="configure-btn">Configure</a>
+                        <a href="#" class="details-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portofino M -->
+            <div class="model-card fade-in delay-1">
+                <div class="model-image">
+                    <img src="https://images.unsplash.com/photo-1621397380773-7d0c7f0a1b1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari Portofino M">
+                </div>
+                <div class="model-info">
+                    <h3>Portofino M</h3>
+                    <p>The Portofino M is the evolution of the Prancing Horse's 2+ GT spider. The 'M' stands for 'Modificata', which in Ferrari nomenclature refers to cars that have undergone an evolution.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>0-100 km/h: 3.45s</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>620 CV</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>V8 Turbo</span>
+                        </div>
+                    </div>
+                    <div class="model-price">From $215,000</div>
+                    <div class="model-links">
+                        <a href="#configurator" class="configure-btn">Configure</a>
+                        <a href="#" class="details-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 812 Competizione -->
+            <div class="model-card fade-in delay-2">
+                <div class="model-image">
+                    <img src="https://images.unsplash.com/photo-1621397380796-6a0f5a2f2b0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari 812 Competizione">
+                </div>
+                <div class="model-info">
+                    <h3>812 Competizione</h3>
+                    <p>The 812 Competizione is the new limited-series special edition that further pushes the boundaries of performance with an extreme V12 engine.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>0-100 km/h: 2.85s</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>830 CV</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>V12</span>
+                        </div>
+                    </div>
+                    <div class="model-price">From $550,000</div>
+                    <div class="model-links">
+                        <a href="#configurator" class="configure-btn">Configure</a>
+                        <a href="#" class="details-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Configurator Section -->
+    <section class="configurator-section" id="configurator">
+        <div class="section-title fade-in">
+            <h2>Configure Your Ferrari</h2>
+        </div>
+        <div class="configurator-container">
+            <div class="configurator-preview fade-in">
+                <div class="car-3d-model" id="carModel"></div>
+            </div>
+            <div class="configurator-options">
+                <div class="option-group fade-in">
+                    <h4>Exterior Color</h4>
+                    <div class="color-options">
+                        <div class="color-option selected" style="background-color: #e32121;" data-color="red"></div>
+                        <div class="color-option" style="background-color: #000000;" data-color="black"></div>
+                        <div class="color-option" style="background-color: #ffffff; border: 1px solid #ccc;" data-color="white"></div>
+                        <div class="color-option" style="background-color: #1e3a8a;" data-color="blue"></div>
+                        <div class="color-option" style="background-color: #f59e0b;" data-color="yellow"></div>
+                        <div class="color-option" style="background-color: #6b7280;" data-color="gray"></div>
+                    </div>
+                </div>
+                <div class="option-group fade-in delay-1">
+                    <h4>Wheels</h4>
+                    <div class="wheel-options">
+                        <div class="wheel-option selected" data-wheel="standard">Standard Alloy</div>
+                        <div class="wheel-option" data-wheel="sport">Sport Forged</div>
+                        <div class="wheel-option" data-wheel="carbon">Carbon Fiber</div>
+                    </div>
+                </div>
+                <div class="option-group fade-in delay-2">
+                    <h4>Interior</h4>
+                    <div class="interior-options">
+                        <div class="interior-option selected" data-interior="leather">Premium Leather</div>
+                        <div class="interior-option" data-interior="alcantara">Alcantara</div>
+                        <div class="interior-option" data-interior="carbon">Carbon Fiber</div>
+                    </div>
+                </div>
+            </div>
+            <div class="configurator-summary fade-in">
+                <h4 class="summary-title">Your Configuration</h4>
+                <div class="summary-details">
+                    <div class="summary-item">
+                        <span>Model:</span>
+                        <span>SF90 Stradale</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Exterior:</span>
+                        <span>Rosso Corsa</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Wheels:</span>
+                        <span>Standard Alloy</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Interior:</span>
+                        <span>Premium Leather</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Base Price:</span>
+                        <span>$625,000</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Options:</span>
+                        <span>$0</span>
+                    </div>
+                </div>
+                <div class="summary-total">
+                    <span>Total Price:</span>
+                    <span>$625,000</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MyFerrari Section -->
+    <section class="myferrari-section" id="myferrari">
+        <div class="section-title fade-in">
+            <h2>MyFerrari</h2>
+        </div>
+        <div class="myferrari-container fade-in">
+            <h2>Welcome to MyFerrari</h2>
+            <p>Access your personalized Ferrari experience. Track your order, manage your services, and connect with the Ferrari world.</p>
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-actions">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%;">Login</button>
+            </form>
+            <p style="margin-top: 30px;">Don't have an account? <a href="#" style="color: var(--ferrari-red);">Register now</a></p>
+        </div>
+    </section>
+
+    <!-- Pre-owned Section -->
+    <section class="preowned-section" id="preowned">
+        <div class="section-title fade-in">
+            <h2>Pre-owned Ferrari</h2>
+        </div>
+        <div class="filter-bar fade-in">
+            <div class="filter-group">
+                <label for="model">Model</label>
+                <select id="model">
+                    <option value="">All Models</option>
+                    <option value="sf90">SF90 Stradale</option>
+                    <option value="296">296 GTB</option>
+                    <option value="f8">F8 Tributo</option>
+                    <option value="roma">Roma</option>
+                    <option value="portofino">Portofino M</option>
+                    <option value="812">812 Competizione</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="year">Year</label>
+                <select id="year">
+                    <option value="">Any Year</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="price">Price Range</label>
+                <select id="price">
+                    <option value="">Any Price</option>
+                    <option value="0-200000">Under $200,000</option>
+                    <option value="200000-300000">$200,000 - $300,000</option>
+                    <option value="300000-400000">$300,000 - $400,000</option>
+                    <option value="400000-500000">$400,000 - $500,000</option>
+                    <option value="500000">Over $500,000</option>
+                </select>
+            </div>
+            <button class="search-btn">Search</button>
+        </div>
+        <div class="models-grid">
+            <!-- Pre-owned cars would be dynamically loaded here -->
+            <div class="model-card fade-in">
+                <div class="model-image">
+                    <img src="https://images.unsplash.com/photo-1621397380796-6a0f5a2f2b0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pre-owned Ferrari">
+                </div>
+                <div class="model-info">
+                    <h3>812 Superfast (2019)</h3>
+                    <p>Low mileage, one owner, full service history. Rosso Corsa with Crema interior.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>5,200 mi</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>800 CV</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>V12</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$349,900</div>
+                    <div class="model-links">
+                        <a href="#" class="configure-btn">Inquire</a>
+                        <a href="#" class="details-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="model-card fade-in delay-1">
+                <div class="model-image">
+                    <img src="https://images.unsplash.com/photo-1621397380716-73e4b156b912?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pre-owned Ferrari">
+                </div>
+                <div class="model-info">
+                    <h3>F8 Tributo (2020)</h3>
+                    <p>Certified Pre-Owned, Nero Daytona with Rosso interior, carbon fiber package.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>8,700 mi</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>720 CV</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>V8 Turbo</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$289,500</div>
+                    <div class="model-links">
+                        <a href="#" class="configure-btn">Inquire</a>
+                        <a href="#" class="details-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="model-card fade-in delay-2">
+                <div class="model-image">
+                    <img src="https://images.unsplash.com/photo-1621397380773-7d0c7f0a1b1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pre-owned Ferrari">
+                </div>
+                <div class="model-info">
+                    <h3>Portofino (2021)</h3>
+                    <p>Like new condition, Blu Pozzi with Beige interior, convertible top.</p>
+                    <div class="model-specs">
+                        <div class="spec-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>3,100 mi</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>620 CV</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-gas-pump"></i>
+                            <span>V8 Turbo</span>
+                        </div>
+                    </div>
+                    <div class="model-price">$219,900</div>
+                    <div class="model-links">
+                        <a href="#" class="configure-btn">Inquire</a>
+                        <a href="#" class="details-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dealers Section -->
+    <section class="dealers-section" id="dealers">
+        <div class="section-title fade-in">
+            <h2>Ferrari Dealers</h2>
+        </div>
+        <div class="dealer-map fade-in">
+            <div class="map-placeholder">
+                <i class="fas fa-map-marker-alt" style="font-size: 3rem; margin-right: 15px;"></i>
+                <span>Interactive Dealer Map Would Appear Here</span>
+            </div>
+        </div>
+        <div class="dealer-list">
+            <div class="dealer-card fade-in">
+                <h3>Ferrari Beverly Hills</h3>
+                <div class="dealer-info">
+                    <p>Located in the heart of Los Angeles, our Beverly Hills dealership offers the full range of Ferrari models and exceptional service.</p>
+                </div>
+                <div class="dealer-contacts">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>9025 Wilshire Blvd, Beverly Hills, CA 90211</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(310) 275-3300</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@ferraribeverlyhills.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="dealer-card fade-in delay-1">
+                <h3>Ferrari New York</h3>
+                <div class="dealer-info">
+                    <p>Our flagship Manhattan location provides an exclusive Ferrari experience with state-of-the-art facilities.</p>
+                </div>
+                <div class="dealer-contacts">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>410 E 69th St, New York, NY 10021</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(212) 988-8888</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@ferrariny.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="dealer-card fade-in delay-2">
+                <h3>Ferrari Miami</h3>
+                <div class="dealer-info">
+                    <p>Serving South Florida with the latest Ferrari models and a dedicated service center for your Prancing Horse.</p>
+                </div>
+                <div class="dealer-contacts">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>1500 Biscayne Blvd, Miami, FL 33132</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(305) 374-4343</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@ferrarimiami.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recall Section -->
+    <section class="recall-section" id="recall">
+        <div class="section-title fade-in">
+            <h2>Recall Information</h2>
+        </div>
+        <div class="recall-container fade-in">
+            <h2>Ferrari Recall Information</h2>
+            <p>Ferrari is committed to the safety and satisfaction of our customers. Check here for any recall information that may affect your vehicle.</p>
+            <div class="vin-check">
+                <input type="text" placeholder="Enter your VIN to check for recalls">
+                <button>Check</button>
+            </div>
+            <div class="recall-list">
+                <div class="recall-item">
+                    <h4>Recall #2023-12345</h4>
+                    <p>Potential issue with brake booster in certain 2020-2022 models.</p>
+                    <p class="recall-date">Issued: May 15, 2023</p>
+                </div>
+                <div class="recall-item">
+                    <h4>Recall #2022-98765</h4>
+                    <p>Software update required for hybrid system in SF90 Stradale vehicles.</p>
+                    <p class="recall-date">Issued: November 3, 2022</p>
+                </div>
+                <div class="recall-item">
+                    <h4>Recall #2022-54321</h4>
+                    <p>Possible fuel line connection issue in certain 2019-2021 V8 models.</p>
+                    <p class="recall-date">Issued: August 12, 2022</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Info Section -->
+    <section class="techinfo-section" id="techinfo">
+        <div class="section-title fade-in">
+            <h2>Technical Information</h2>
+        </div>
+        <div class="tech-tabs fade-in">
+            <button class="tech-tab active" data-tab="specs">Specifications</button>
+            <button class="tech-tab" data-tab="manuals">Manuals</button>
+            <button class="tech-tab" data-tab="software">Software Updates</button>
+        </div>
+        <div class="tech-content">
+            <div class="tech-panel active" id="specs">
+                <h3>Technical Specifications</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>Model</th>
+                        <th>Engine</th>
+                        <th>Power</th>
+                        <th>0-100 km/h</th>
+                        <th>Top Speed</th>
+                    </tr>
+                    <tr>
+                        <td>SF90 Stradale</td>
+                        <td>4.0L V8 + 3 Electric Motors</td>
+                        <td>1000 CV</td>
+                        <td>2.5s</td>
+                        <td>340 km/h</td>
+                    </tr>
+                    <tr>
+                        <td>296 GTB</td>
+                        <td>3.0L V6 + Electric Motor</td>
+                        <td>830 CV</td>
+                        <td>2.9s</td>
+                        <td>330 km/h</td>
+                    </tr>
+                    <tr>
+                        <td>F8 Tributo</td>
+                        <td>3.9L V8 Turbo</td>
+                        <td>720 CV</td>
+                        <td>2.9s</td>
+                        <td>340 km/h</td>
+                    </tr>
+                    <tr>
+                        <td>Roma</td>
+                        <td>3.9L V8 Turbo</td>
+                        <td>620 CV</td>
+                        <td>3.4s</td>
+                        <td>320 km/h</td>
+                    </tr>
+                    <tr>
+                        <td>Portofino M</td>
+                        <td>3.9L V8 Turbo</td>
+                        <td>620 CV</td>
+                        <td>3.45s</td>
+                        <td>320 km/h</td>
+                    </tr>
+                    <tr>
+                        <td>812 Competizione</td>
+                        <td>6.5L V12</td>
+                        <td>830 CV</td>
+                        <td>2.85s</td>
+                        <td>340 km/h</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tech-panel" id="manuals">
+                <h3>Owner's Manuals</h3>
+                <p>Download the latest owner's manuals for your Ferrari vehicle.</p>
+                <div class="downloads">
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>SF90 Stradale Manual</h4>
+                            <p>PDF, 12.5 MB</p>
+                        </div>
+                    </div>
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>296 GTB Manual</h4>
+                            <p>PDF, 10.8 MB</p>
+                        </div>
+                    </div>
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>F8 Tributo Manual</h4>
+                            <p>PDF, 9.7 MB</p>
+                        </div>
+                    </div>
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>Roma Manual</h4>
+                            <p>PDF, 8.9 MB</p>
+                        </div>
+                    </div>
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>Portofino M Manual</h4>
+                            <p>PDF, 9.2 MB</p>
+                        </div>
+                    </div>
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>812 Competizione Manual</h4>
+                            <p>PDF, 11.3 MB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-panel" id="software">
+                <h3>Software Updates</h3>
+                <p>Download the latest software updates for your Ferrari's infotainment and control systems.</p>
+                <div class="downloads">
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>Infotainment System v4.2</h4>
+                            <p>For 2020-2023 models, 1.2 GB</p>
+                        </div>
+                    </div>
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>Hybrid System Update v3.1</h4>
+                            <p>For SF90 and 296 GTB, 850 MB</p>
+                        </div>
+                    </div>
+                    <div class="download-item">
+                        <div class="download-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <div class="download-info">
+                            <h4>Performance Telemetry v2.4</h4>
+                            <p>For all models, 320 MB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Models</h3>
+                <ul class="footer-links">
+                    <li><a href="#">SF90 Stradale</a></li>
+                    <li><a href="#">296 GTB</a></li>
+                    <li><a href="#">F8 Tributo</a></li>
+                    <li><a href="#">Roma</a></li>
+                    <li><a href="#">Portofino M</a></li>
+                    <li><a href="#">812 Competizione</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Maintenance</a></li>
+                    <li><a href="#">Warranty</a></li>
+                    <li><a href="#">Assistance</a></li>
+                    <li><a href="#">Genuine Parts</a></li>
+                    <li><a href="#">Classiche</a></li>
+                    <li><a href="#">Corse Clienti</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>About Ferrari</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Company</a></li>
+                    <li><a href="#">History</a></li>
+                    <li><a href="#">Innovation</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Recall Information</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                &copy; 2023 Ferrari N.V. - All rights reserved
+            </div>
+            <div class="legal-links">
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('.nav-links a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Configurator Functionality
+        const colorOptions = document.querySelectorAll('.color-option');
+        const wheelOptions = document.querySelectorAll('.wheel-option');
+        const interiorOptions = document.querySelectorAll('.interior-option');
+        const carModel = document.getElementById('carModel');
+        const summaryItems = document.querySelectorAll('.summary-item span:nth-child(2)');
+        const totalPrice = document.querySelector('.summary-total span:last-child');
+
+        // Color selection
+        colorOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                colorOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                
+                const color = option.getAttribute('data-color');
+                let colorName = '';
+                
+                switch(color) {
+                    case 'red':
+                        colorName = 'Rosso Corsa';
+                        carModel.style.backgroundImage = 'url("https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")';
+                        break;
+                    case 'black':
+                        colorName = 'Nero Daytona';
+                        carModel.style.backgroundImage = 'url("https://images.unsplash.com/photo-1621397380796-6a0f5a2f2b0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")';
+                        break;
+                    case 'white':
+                        colorName = 'Bianco Avus';
+                        carModel.style.backgroundImage = 'url("https://images.unsplash.com/photo-1621397380716-73e4b156b912?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")';
+                        break;
+                    case 'blue':
+                        colorName = 'Blu Pozzi';
+                        carModel.style.backgroundImage = 'url("https://images.unsplash.com/photo-1621397380773-7d0c7f0a1b1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")';
+                        break;
+                    case 'yellow':
+                        colorName = 'Giallo Modena';
+                        // carModel.style.backgroundImage = 'URL("Images\f-5.webp")';
+                        carModel.style.backgroundImage = 'url("https://images.unsplash.com/photo-1621397380639-9e8c313a9a10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")';
+                        break;
+                    case 'gray':
+                        colorName = 'Grigio Titanio';
+                        carModel.style.backgroundImage = 'url("https://images.unsplash.com/photo-1621397380746-22bbd39a6f69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")';
+                        break;
+                }
+                
+                summaryItems[1].textContent = colorName;
+                updatePrice();
+            });
+        });
+
+        // Wheel selection
+        wheelOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                wheelOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                
+                const wheel = option.getAttribute('data-wheel');
+                let wheelName = '';
+                
+                switch(wheel) {
+                    case 'standard':
+                        wheelName = 'Standard Alloy';
+                        break;
+                    case 'sport':
+                        wheelName = 'Sport Forged';
+                        break;
+                    case 'carbon':
+                        wheelName = 'Carbon Fiber';
+                        break;
+                }
+                
+                summaryItems[2].textContent = wheelName;
+                updatePrice();
+            });
+        });
+
+        // Interior selection
+        interiorOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                interiorOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                
+                const interior = option.getAttribute('data-interior');
+                let interiorName = '';
+                
+                switch(interior) {
+                    case 'leather':
+                        interiorName = 'Premium Leather';
+                        break;
+                    case 'alcantara':
+                        interiorName = 'Alcantara';
+                        break;
+                    case 'carbon':
+                        interiorName = 'Carbon Fiber';
+                        break;
+                }
+                
+                summaryItems[3].textContent = interiorName;
+                updatePrice();
+            });
+        });
+
+        // Update price based on selections
+        function updatePrice() {
+            let basePrice = 625000;
+            let optionsPrice = 0;
+            
+            // Wheel price adjustments
+            const selectedWheel = document.querySelector('.wheel-option.selected');
+            if (selectedWheel) {
+                const wheel = selectedWheel.getAttribute('data-wheel');
+                if (wheel === 'sport') optionsPrice += 15000;
+                if (wheel === 'carbon') optionsPrice += 30000;
+            }
+            
+            // Interior price adjustments
+            const selectedInterior = document.querySelector('.interior-option.selected');
+            if (selectedInterior) {
+                const interior = selectedInterior.getAttribute('data-interior');
+                if (interior === 'alcantara') optionsPrice += 10000;
+                if (interior === 'carbon') optionsPrice += 25000;
+            }
+            
+            summaryItems[4].textContent = `$${basePrice.toLocaleString()}`;
+            summaryItems[5].textContent = `$${optionsPrice.toLocaleString()}`;
+            totalPrice.textContent = `$${(basePrice + optionsPrice).toLocaleString()}`;
+        }
+
+        // Tech Info Tabs
+        const techTabs = document.querySelectorAll('.tech-tab');
+        const techPanels = document.querySelectorAll('.tech-panel');
+
+        techTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                techTabs.forEach(t => t.classList.remove('active'));
+                techPanels.forEach(p => p.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        function checkScroll() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Pre-owned search functionality
+        const searchBtn = document.querySelector('.preowned-section .search-btn');
+        searchBtn.addEventListener('click', () => {
+            alert('Search functionality would filter pre-owned inventory based on selected criteria in a real implementation.');
+        });
+
+        // VIN check functionality
+        const vinCheckBtn = document.querySelector('.vin-check button');
+        vinCheckBtn.addEventListener('click', () => {
+            const vinInput = document.querySelector('.vin-check input');
+            if (vinInput.value.trim() === '') {
+                alert('Please enter your VIN to check for recalls.');
+            } else {
+                alert('In a real implementation, this would check the VIN against Ferrari\'s recall database and display results.');
+            }
+        });
+
+        // Login form submission
+        const loginForm = document.querySelector('.login-form');
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('In a real implementation, this would authenticate the user and grant access to their MyFerrari account.');
+        });
+    </script>
+</body>
+</html>
