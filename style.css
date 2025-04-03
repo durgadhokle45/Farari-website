@@ -581,7 +581,8 @@ html {
 	background: linear-gradient(-45deg, #810505, #0d0404, #6d0404, #040e13);
 	background-size: 400% 400%;
 	animation: gradientBG 8s ease infinite;
-  }{
+  }
+  {
 	background: linear-gradient(-45deg, #810505, #0d0404, #6d0404, #040e13);
 	background-size: 400% 400%;
 	animation: gradientBG 8s ease infinite;
@@ -759,11 +760,43 @@ html {
     }
 }
 /* ---------------------------------------footer---------------------------------- */
-.footer-first{
-	background-color: black;
-	color:#fff;
-	text-align: center;
-	
+.footer-first {
+    text-align: center; /* टेक्स्ट आणि बटण सेंटरमध्ये ठेवण्यासाठी */
+    padding: 30px; /* आतील जागा वाढवण्यासाठी */
+   background-color: #040e13;/* डार्क बॅकग्राउंड */
+    color: white;
+    border-radius: 8px;/
+	height:100px;
+    width: 100%; /* योग्य रुंदी */
+    /* max-width: 600px; */
+    margin: 20px auto; /* वर-खाली आणि सेंटरमध्ये ठेवण्यासाठी */
+}
+
+.footer-first-1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px; /* हेडिंग आणि टेक्स्टमध्ये स्पेस */
+}
+
+.footer-first-2 {
+    font-size: 1.1rem;
+    display: block; /* ब्लॉक लेव्हलसारखा दाखवण्यासाठी */
+    margin-bottom: 20px; टेक्स्ट आणि बटणमध्ये गॅप
+}
+
+button {
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: darkred;
 }
 .footer{
 	background-color: black;
