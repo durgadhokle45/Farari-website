@@ -34,6 +34,7 @@
             justify-content: center;
             align-items: center;
             display: flex;
+            gap: 20px; 
 
         }
 
@@ -53,8 +54,9 @@
             width: 100%;
             background-color: blueviolet;
             display: grid;
+            flex-wrap: wrap;
             grid-template-columns: 4fr 4fr 4fr 4fr;
-            justify-content: space-around;
+            justify-content:space-between;
         }
 
         .main-content .image {
@@ -62,7 +64,7 @@
             height: 31rem;
             width: 100%;
             background-color: rgb(43, 217, 226);
-           
+
 
         }
 
@@ -70,12 +72,13 @@
             display: flex;
             height: 13rem;
             width: 100%;
-            background-color:#fff;
-            
+            background-color: #fff;
+
         }
 
         .main-content {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             padding: 20px;
         }
@@ -85,31 +88,61 @@
 
             /* Ensures four divs fit inside */
         }
-        .one{
-            margin-left:60px;
+
+        /* .one {
+            margin-left: 60px;
         }
-        .four{
+
+        .four {
             margin-right: 60px;
-        }
-        .image img{
+        } */
+
+        .image img {
             height: 31rem;
+            object-fit: cover;
             width: 100%;
-           
+
         }
-        .info p{
+
+        .info p {
             font-size: 30px;
             margin-top: 8px;
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        /* ---------------------Responsive---------------------------- */
        
+        
+
+   
+
+        @media (max-width: 992px) {
+            .main-div {
+                width: calc(50% - 20px);
+                /* 2 items per row */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-div {
+                width: 100%;
+            }
+            .main-heading-1 p{
+                font-size:20px;
+
+            }
+            .main-heading{
+                height: 12rem;
+            }
+                /* 1 item per row */
+            
+        }
     </style>
 </head>
 
 <body>
     <nav>
-        <div> <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6q9uNcTgToB5VbD9DdOQm7EBUt2W9bogf6s6QcCoBIuYjSYw2X4CTHoF6unHoLrJoxlE&usqp=CAU">
+        <div> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6q9uNcTgToB5VbD9DdOQm7EBUt2W9bogf6s6QcCoBIuYjSYw2X4CTHoF6unHoLrJoxlE&usqp=CAU">
         </div>
     </nav>
 
@@ -118,7 +151,7 @@
             <p>MEN'S COLLECTION: APPAREL, FOOTWEAR & ACCESSORIES</p>
         </div>
     </div>
-
+    <!-- ------------------------------first-row------------------------------ -->
     <div class="main-content ">
         <div class="main-div one">
             <div class="image">
@@ -137,9 +170,10 @@
             </div>
             <div class="info">
                 <p>Puma for Scuderia Ferrari HP 2025 Leclerc baseball cap
-                   <br>
-                   €45<br><br><u>Shop this</u></p>
-                
+                    <br>
+                    €45<br><br><u>Shop this</u>
+                </p>
+
             </div>
         </div>
 
@@ -161,6 +195,116 @@
             <div class="info">
                 <p>Puma for Scuderia Ferrari HP 2025 Team polo shirt<br>
                     €85<br><br><u>Shop this</u></p>
+            </div>
+        </div>
+    </div>
+    <!-- ------------------------------second-row------------------------------ -->
+    <div class="main-content ">
+        <div class="main-div one">
+            <div class="image">
+                <img src="images/greencap1.png">
+            </div>
+            <div class="info">
+                <p>Baseball cap with metal Prancing Horse detail
+                    <br>
+                    €135<br><br><u>Shop this</u>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="main-div">
+            <div class="image">
+                <img src="images/shrit3.png">
+            </div>
+            <div class="info">
+                <p>Cashmere sweater with zip
+
+                    <br>
+                    €990<br><br><u>Shop this</u>
+                </p>
+
+            </div>
+        </div>
+
+
+        <div class="main-div">
+            <div class="image">
+                <img src="images/man1.png">
+            </div>
+            <div class="info">
+                <p>Puma for Scuderia Ferrari HP 2025 Team T-shirt
+                    <br>
+                    €70<br><br><u>Shop this</u>
+                </p>
+            </div>
+        </div>
+
+        <div class="main-div four">
+            <div class="image">
+                <img src="images/greencap2.png">
+            </div>
+            <div class="info">
+                <p>Baseball cap with metal Prancing Horse detail
+                    <br>
+                    €130<br><br><u>Shop this</u>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- -----------------------------third-row----------------------------- -->
+    <div class="main-content ">
+        <div class="main-div one">
+            <div class="image">
+                <img src="images/man3.png">
+            </div>
+            <div class="info">
+                <p>Puma for Scuderia Ferrari HP 2025 Team T-shirt
+                    <br>
+                    €170<br><br><u>Shop this</u>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="main-div">
+            <div class="image">
+                <img src="images/cap4.png">
+            </div>
+            <div class="info">
+                <p>Puma for Scuderia Ferrari HP 2025 Leclerc baseball
+
+                    <br>
+                    €45<br><br><u>Shop this</u>
+                </p>
+
+            </div>
+        </div>
+
+
+        <div class="main-div">
+            <div class="image">
+                <img src="images/cap7.png">
+            </div>
+            <div class="info">
+                <p>Puma for Scuderia Ferrari HP 2025 Team baseball cap
+
+                    <br>
+                    €40<br><br><u>Shop this</u>
+                </p>
+            </div>
+        </div>
+
+        <div class="main-div four">
+            <div class="image">
+                <img src="images/man4.png">
+            </div>
+            <div class="info">
+                <p>Puma for Scuderia Ferrari HP 2025 Team T-shirt
+
+                    <br>
+                    €170<br><br><u>Shop this</u>
+                </p>
             </div>
         </div>
     </div>
