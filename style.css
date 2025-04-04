@@ -778,20 +778,14 @@ html {
 	cursor: pointer;
     grid-template-columns: 2.4fr 2.4fr 2.4fr 2.4fr 2.4fr; 
 }
-.footer-title{
+a .footer-title{
 	font-weight: bold;
 	margin-top: 50px;
 	font-family: Arial;
 	cursor: pointer;
 	font-size:25px;
 }
-.footer-title~span{
-	margin-top: 32px;
-	display: block;
-	cursor: pointer;
-	margin-bottom: 15px;
-	font-size:19px;
-}
+
 
 @media (max-width: 768px) {
 	.footer{
