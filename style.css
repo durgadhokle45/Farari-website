@@ -38,7 +38,7 @@
 {
 	color: #fff!important;
 	font-weight: 600;
-	font-size: 28px;
+	font-size: 20px;
 	padding:40px;
 	margin-right: 20px;
 }
@@ -634,28 +634,6 @@ html {
 	
 }
 
-
-
-  /* --------------------------racer-content---------------------------------------------- */
-
-  /* .racer-details{
-	background-color: #007bff;
-	height: 70vh;
-	width: 100%;
-	display: grid;
-	grid-template-columns: 4fr 4fr 4fr;
-
-  }
-  #Racer-container h2{
-	font-weight: bold;
-	
-  }
-  .racer0{
-	background-color:aquamarine;
-   
-  } */
-
-
   #Racer-container {
     width: 100%;
     margin: auto;
@@ -706,11 +684,6 @@ html {
    font-size: 4rem;
    
 }
-
-
-
-
-
 
 .racer0 {
     width: 400px;  /* Equal width */
@@ -808,4 +781,11 @@ a .footer-title{
 		font-size:20px;
 	}
    
+}
+
+
+@media (max-width: 768px) {
+    .start-race h1{
+		font-size: 30px;
+	}
 }
