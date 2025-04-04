@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari New Arrivals</title>
+    <link rel="stylesheet" href="Collectionstyle.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background:black;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu-icon i, .nav-icons i {
+    font-size: 22px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.logo img {
+    width: 150px;
+}
+
+/* New Arrivals Section */
+.new-arrivals {
+    text-align: center;
+    padding: 20px;
+}
+
+.new-arrivals h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.filter-btn {
+    border: 1px solid black;
+    background: white;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+}
+
+.filter-btn i {
+    margin-right: 5px;
+}
+
+.items-count {
+    font-size: 14px;
+    color: gray;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    max-width: 250px;
+    display: block;
+    margin: 0 auto;
+}
+
+.new-tag {
+    font-size: 12px;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product h3 {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .product-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Footer */
+.footer {
+    background: black;
+    color: white;
+    padding: 40px 0;
+    margin-top: 30px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 20px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    border-top: 1px solid gray;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .product-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+    </style>
+</head>
+
+<body>
+
+   
+
+    <!-- New Arrivals Section -->
+    <section class="new-arrivals">
+        <h1>NEW ARRIVALS</h1>
+        <button class="filter-btn"><i class="fas fa-sliders-h"></i> FILTER & SORT</button>
+        <p class="items-count">All Items</p>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="product-grid">
+        <div class="product">
+            <p class="new-tag">NEW IN</p>
+            <img src="images/./jaket.webp" alt="Overshirt Jacket">
+            <h3>Overshirt jacket in draped nappa leather</h3>
+            <p class="price">£3,600</p>
+        </div>
+        <div class="product">
+            <p class="new-tag">NEW IN</p>
+            <img src="images/./glass.jpeg" alt="Ferrari Sunglasses">
+            <h3>Ferrari sunglasses in brown tortoiseshell</h3>
+            <p class="price">£487</p>
+        </div>
+        <div class="product">
+            <p class="new-tag">NEW IN</p>
+            <img src="images/./tousers.jpeg" alt="Ferrari Trousers">
+            <h3>Trousers in draped nappa leather</h3>
+            <p class="price">£3,300</p>
+        </div>
+        <div class="product">
+            <p class="new-tag">NEW IN</p>
+            <img src="images/sunglass.jpeg" alt="Ferrari Sunglasses Black">
+            <h3>Ferrari sunglasses in matt black titanium</h3>
+            <p class="price">£535</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Ferrari Collections</h3>
+                <ul>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Kids</a></li>
+                    <li><a href="#">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+    </footer>
+
+
+    <script src="Collectionscript.js"></script>
+</body>
+</html>
+

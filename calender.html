@@ -1,0 +1,681 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Logo</title>
+    <script src="https://kit.fontawesome.com/a1e7f59e65.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: rgb(41, 40, 40);
+    padding: 10px;
+    height:30px;
+}
+
+.logo {
+
+    top: 0px;
+    left: 10px;
+    z-index: 1000; 
+    
+}
+
+.logo img {
+    width: 50px; 
+    
+    height: auto;
+}
+
+
+
+ nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s;
+    font-size:12px;
+}
+
+nav ul li a:hover, .active {
+    color: white;
+    border-bottom: 2px solid white;
+} 
+
+
+main {
+    padding: 100px 20px;
+}
+
+.content {
+    height: 2000px;
+    
+}
+.text4{
+    color:white;
+    text-align: center;
+    margin-top:60px;
+}
+.img2{
+    height:140px;
+    width:25%;
+    margin-left:95px;
+    margin-top:50px;
+}
+.img3{
+    height:140px;
+    width:25%;
+    margin-left:35px;
+    margin-top:50px;  
+}
+.images{
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+.images img:hover {
+    transform: scale(1.1);
+}
+.text6{
+    color:red ;
+    font-size:12px;
+    margin-left:100px;
+    margin-top:20px;
+}
+.text7{
+    color:red ;
+    font-size:12px;
+    margin-left:90px;
+    margin-top:20px;
+}
+.text8{
+    color:red ;
+    font-size:12px;
+    margin-left:120px;
+    margin-top:20px;
+}
+.text01{
+    display: flex;
+}
+.buttons{
+    display: flex;
+}
+.btn2{
+    color:white;
+    background-color: black;
+    border: 1px solid white;
+    height:18px;
+    width:16%;
+    margin-left:100px;
+    font-size:8px;
+}
+.btn3{
+    color:white;
+    background-color: black;
+    border: 1px solid white;
+    height:18px;
+    width:19%;
+    margin-left:100px;
+    font-size:8px;
+}
+.btn4{
+    color:white;
+    background-color: black;
+    border: 1px solid white;
+    height:18px;
+    width:19%;
+    margin-left:95px;
+    font-size:8px;
+}
+.img4{
+    height:140px;
+    width:26%;
+    margin-left:90px;
+    margin-top:60px;
+}
+.img5{
+    height:140px;
+    width:26%;
+    margin-left:26px;
+    margin-top:60px;  
+}
+.text9{
+    color:red ;
+    font-size:12px;
+    margin-left:0px;
+    margin-top:10px;
+}
+.text10{
+    color:red ;
+    font-size:12px;
+    margin-left:140px;
+    margin-top:10px;
+    height:30px;
+}
+.text70{
+    color:red ;
+    font-size:12px;
+    margin-left:490px;
+    margin-top:10px;
+    height:30px;
+}
+.text80{
+    color:red ;
+    font-size:12px;
+    margin-left:110px;
+    margin-top:10px;
+    height:30px;
+}
+.text70{
+    color:red ;
+    font-size:12px;
+    margin-left:150px;
+    margin-top:10px;
+    height:30px;
+}
+.text90{
+    color:red ;
+    font-size:12px;
+    margin-left:110px;
+    margin-top:10px;
+    height:30px;
+}
+
+.text11{
+    color:red ;
+    font-size:12px;
+    margin-left:180px;
+    margin-top:10px;
+}
+.btn5{
+    color:white;
+    background-color: black;
+    border: 1px solid white;
+    height:17px;
+    width:12%;
+    margin-left:100px;
+    font-size:8px;
+}
+.btn6{
+    color:white;
+    background-color: black;
+    border: 1px solid white;
+    height:17px;
+    width:8%;
+    margin-left:10px;
+    font-size:7px;
+}
+.btn7{
+    color:white;
+    background-color: black;
+    border: 1px solid white;
+    height:15px;
+    width:19%;
+    margin-left:65px;
+    font-size:9px;
+}
+.btn8{
+    color:white;
+    background-color: black;
+    border: 1px solid white;
+    height:15px;
+    width:19%;
+    margin-left:90px;
+    font-size:9px;
+}
+.logo01{
+    height:50px;
+    width:4%;
+    margin-left:380px;
+    position: fixed;
+}
+.button{
+    background-color: black;
+    border:1px solid white;
+    color:white;
+    margin-top:100px;
+    width:14%;
+    margin-left:70px;
+    height:40px;
+}
+.fa-solid{
+    background-color:white;
+}
+.btn12{
+    color:white;
+    background-color: black;
+    border: 1px solid white;
+    height:14px;
+    width:20%;
+    margin-left:100px;
+    font-size:8px;
+}
+.btn13{
+    color:white;
+    background-color: black;
+    border: 1px solid white;
+    height:14px;
+    width:19%;
+    margin-left:90px;
+    font-size:8px;
+}
+.btn14{
+    color:white;
+    background-color: black;
+    border: 1px solid white;
+    height:14px;
+    width:19%;
+    margin-left:100px;
+    font-size:8px;
+}
+.back{
+    background-color: rgb(44, 43, 43);
+    height:250px;
+}
+.text76{
+    text-align: center;
+    color:white;
+     padding-top:60px; 
+    
+}
+.text77{
+    text-align: center;
+    color:white;
+     padding-top:10px; 
+     
+}
+.button7{
+    height:50px;
+    width:15%;
+    background-color: rgb(247, 119, 119);
+    color: #fff;
+    margin-left:360px;
+
+}
+
+footer
+ {
+            background-color: rgb(20, 20, 20);
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            text-align: left;
+            font-size: 14px;
+ }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 10px;
+            
+        }
+
+        .footer-column a {
+            text-decoration: none;
+            color: white;
+            margin-bottom: 5px;
+            font-size:10px;
+            margin-top:15px;
+            margin-left:12px;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+   .text43{
+    color:white;
+    font-size:12px;
+    margin-top:50px;
+        }
+        .p-tag{
+            color: rgb(153, 154, 155);
+            font-size:8px;
+            text-align: center;
+            margin-top:80px;
+        }
+    
+    .social-links{
+display: flex;
+margin-left:100px;
+    }
+    .p-tag1{
+        color: #fff;
+        font-size:12px;
+        word-spacing:10px;
+        margin-top:20px;
+        margin-left:30px;
+    }
+    .p-tag09{
+        color: rgb(153, 154, 155);
+            font-size:8px;
+            text-align: center;
+            margin-top:0px;
+        
+    }
+    .p-tag2{
+        color: #fff;
+        font-size:12px;
+        word-spacing:10px;
+        margin-top:20px;
+        margin-left:130px;
+    }
+    
+    .p-tag3{
+        color: #fff;
+        font-size:12px;
+        word-spacing:30px;
+        margin-top:20px;
+        margin-left:50px;
+    }
+    .fa-brands{
+        margin-left:30px;
+    }
+    .fa-instagram{
+        margin-left:30px;
+    }
+    .footer-links{
+        
+       display: flex;
+    }
+    .te{
+        color: #fff;
+        font-size:8px;
+        word-spacing:0px;
+        margin-left:50px;
+        margin-top:20px;
+    }
+    .tx{
+        color: #fff;
+        font-size:8px;
+        word-spacing:20px;
+        margin-left:50px;
+        margin-top:20px; 
+    }
+    .tt{
+    color: #fff;
+        font-size:8px;
+        margin-left:50px;
+        margin-top:20px;
+    }
+    .tp{
+        color: #fff;
+        font-size:8px;
+        margin-left:50px; 
+        margin-top:20px; 
+    }
+    .te1{
+        color: #fff;
+        font-size:8px;
+        margin-left:50px;
+       margin-top:20px;
+            
+    }
+    .footer-links1{
+        /* background-color: rgb(65, 63, 63);
+        height:100px; */
+        display: flex;
+        
+    }
+    .div03{
+        background-color: rgb(43, 42, 42);
+        height:100px;
+    }
+    
+    
+        
+        
+
+
+    </style>
+</head>
+<body>
+   
+ <header>
+        <div class="logo">
+            <img src="images/fer.jpg" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Racing</a></li>
+                <li><a href="#">Sports Cars</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">Experiences</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+       
+       <img src="images/logo01.png"class="logo01">
+         
+        <h1 class="text4">2025 Events Calendar</h1>
+        
+        
+       <!-- <button class="button"><i class="fa-solid fa-caret-down"></i>Category</button> -->
+        </div>
+    </main>
+    <div class="images">
+    <img src="images/bathurst.jpg"class="img2">
+    <img src="images/sonoma.jpg" class="img3">
+    <img src="images/sonoma.jpg" class="img3">
+
+    </div>
+    <div class="text01">
+    <p class="text6">31 January • 2 February • 2025 </p>
+   
+    
+    <p class="text7">24-25 • February • 2025</p>
+    <p class="text8">5-9 • March • 2025</p>
+    </div>
+    <div class="buttons">
+    <button class="btn2">CHALLENGE ASTRULLIA</button>
+    <button class="btn3">CHALLENGE NORTH AMERICA</button>
+    <button class="btn4">CHALLENGE NORTH AMERICA</button>
+    </div>
+
+    <div class="images">
+        <img src="images/monja.jpg"class="img4">
+        <img src="images/monja.jpg" class="img5">
+        <img src="images/monja.jpg" class="img5">
+    
+        </div> 
+    
+        <div class="text01">
+            <p class="text6">
+                <p class="text9">19-20 • March • 2025 </p>
+                <p class="text10">22-23 • March • 2025</p>
+                <p class="text11">22-23 • March • 2025</p>
+                
+                </div>
+                <div class="buttons">
+                    <button class="btn5">XX PROGRAMME</button>
+                    <button class="btn6">F1 CLIENT</button>
+                    <button class="btn7">CLUB COMPETIZIONI GT</button>
+                    <button class="btn8">CHALLENGE EUROPE</button>
+                    </div>
+    
+                    <div class="images">
+                        <img src="images/area.jpg"class="img4">
+                        <img src="images/misand.jpg" class="img5">
+                        <img src="images/daytona.jpg" class="img5">
+                    
+                        </div>
+                        <div class="text01">
+                            <p class="text">
+                               
+                                
+                
+                                
+                                 <p class="text80">4-6 • April • 2025</p>
+                               
+                                 <p class="text70">10-13 • April • 2025</p>
+                                 <p class="text90">9-13 • April • 2025</p>
+                                 
+                                 
+                                </div>
+                                
+                                <div class="buttons">
+                                    <button class="btn5">XX PROGRAMME</button>
+                                    <button class="btn6">F1 CLIENT</button>
+                                    <button class="btn7">CLUB COMPETIZIONI GT</button>
+                                    <button class="btn8">CHALLENGE EUROPE</button>
+                                    </div> 
+                                    
+                                    
+                
+                                     <div class="images">
+                                        <img src="images/watkins.jpg"class="img4">
+                                        <img src="images/okayama.jpg" class="img5">
+                                        <img src="images/seca.jpg" class="img5">
+                                    
+                                        </div>
+        <div class="text01">
+        <p class="text6">
+        <p class="text9">23-27 • April • 2025</p>
+                                               
+         <p class="text10">8-10 • August • 2025</p>
+         <p class="text11">26-27 • August • 2025</p>
+                                                
+            </div>
+                                                
+                <div class="buttons">
+               <button class="btn12">CHALLENGE NORTH AMERICA</button>
+                                                   
+                                                    
+             <button class="btn13">CHALLENGE JAPAN</button>
+             <button class="btn14">CHALLENGE NORTH AMERICA</button>
+                </div> 
+                
+                
+     <div class="back">
+        <h3 class="text76">Newsletter</h3>
+        <h4 class="text77">Stay up to date with the latest news from the world of Ferrari.</h4>
+        <button class="button7">SUBCRIBE</button>
+    </div> -
+
+    <footer>
+        <div class="footer-column">
+            <h3 class="text43">RACING</h3>
+            <a href="#">Scuderia Ferrari HP</a>
+            <a href="#">Charles Leclerc</a>
+            <a href="#">Lewis Hamilton</a>
+            <a href="#">Hypercar</a>
+            <a href="#">GT Series</a>
+          <a href="#">Esports</a>
+             <a href="#">Scuderia  Ferrari Driver<br> Academy</a>
+         <a href="#">Scuderia Ferrari Membe</a>
+        </div>
+        <div class="footer-column">
+            <h3 class="text43">SPORTS CARS</h3>
+            <a href="#">Range</a>
+            <a href="#">Configure your <br>Ferrari</a>
+            <a href="#">MyFerrari</a>
+            <a href="#">Pre-owned</a>
+           <a href="#">Dealers</a>
+            <a href="#">Recall information</a>
+            <a href="#">TechInfo</a>
+        </div>
+        <div class="footer-column">
+            <h3 class="text43">COLLECTIONS</h3>
+            <a href="#">Men</a>
+            <a href="#">Women</a>
+            <a href="#">Kids</a>
+            <a href="#">Shoes</a>
+           <a href="#">Eyewear</a>
+           <a href="#">Collectibles</a>
+           <a href="#">Scuderia Ferrari<br> Selection</a>
+        </div>
+        <div class="footer-column">
+            <h3 class="text43">EXPERIENCES</h3>
+            <a href="#">Corse Clienti</a>
+            <a href="#">Ferrari Esports <br>Series</a>
+            <a href="#">Ferrari Museums</a>
+           <a href="#"> Ferrari World Abu<br> Dhabi</a>
+             <a href="#">Ferrari Land<br> Barcelona</a>
+        </div>
+        <div class="footer-column">
+            <h3 class="text43">ABOUT US</h3>
+            <a href="#">Corporate</a>
+            <a href="#">Sustainability</a>
+            <a href="#">Media Centre</a>
+            <a href="#">News</a>
+           <a href="#"> Magazine</a>
+            <a href="#">History</a>
+            <a href="#">Join us</a>
+        </div>
+    </footer>
+
+
+
+
+
+
+        <div class="social-links">
+            <p class="p-tag1">  <i class="fa-brands fa-square-facebook"></i> FACEBOOK</p>
+            
+            <p class="p-tag1">  <i class="fa-brands fa-instagram"></i> INSTAGRAM</p>
+            <p class="p-tag1">   <i class="fa-brands fa-linkedin"></i> LINKEDIN</p>
+            <p class="p-tag1">   <i class="fa-brands fa-tiktok"></i> TIKTOK</p>
+            </div>
+            <div class="social-links">
+              <p class="p-tag1">   <i class="fa-brands fa-twitch"></i> Twitch</p>
+              <p class="p-tag2"><i class="fa-solid fa-xmark"></i> X</p>
+            <p class="p-tag2"><i class="fa-brands fa-youtube"></i> YOUTUBE</p>
+           
+            
+        </div>
+        
+        <div class="company-info">
+
+ <p class="p-tag">Ferrari N.V. - Holding company - A company under Dutch law, having its official seat in Amsterdam, the Netherlands and its corporate address at Via <br>
+                 Abetone Inferiore No. 4, I-41053 Maranello (MO), Italy, registered with the Dutch trade register under number 64060977</p>
+ <p class="p-tag09">Ferrari S.p.A. - A company under Italian law, having its registered office at Via Emilia Est No. 1163, Modena,<br>
+                Italy, Companies' Register of Modena, VAT and Tax number 00159560366 and share capital of Euro 20,260,000.</p>
+                <p>Copyright 2025 - All rights reserved</p>
+        </div>
+        <div class="div03">
+        <div class="footer-links">
+            <p class="te">Legal</p>
+            <p class="tp">Privacy Policy</p>
+            <p class="tp">Cookie Policy</p>
+            <p class="tx">Accessibility</p>
+            <p class="tt">Submit your privacy request</p>
+            <p class="te1">Contacts</p>
+            <p class="tp">Corporate ENG</p>
+            <p class="tp">Corporate ITA</p><br>
+            </div>
+                
+            <div class="footer-links1">
+            <p class="te">Responsible Disclosure</p>
+            <p class="tt">Reward Anticounterfeiting</p>
+            <p class="tp">Media Centre</p>
+        </div>
+    </div>
+        <div class="country-selector">
+            <span>INDIA &#9660;</span>
+        </div>
+    </footer>
+
+
+
+
+
+    

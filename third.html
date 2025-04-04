@@ -1,0 +1,435 @@
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Ferrari Corse Clienti</title>
+     <link rel="stylesheet" href="styles.css">
+     <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:white;
+    color: #fff;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #111;
+     padding: 15px 30px; 
+    height:20px;
+}
+
+nav .logo img {
+    height: 60px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: color 0.3s;
+    font-size:10px;
+}
+
+nav ul li a:hover, .active {
+    color: white;
+    border-bottom: 2px solid white;
+}
+
+.search {
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background: url('images/sample.jpg') no-repeat center center/cover;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero h1 {
+    position: relative;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+/* Articles Section */
+.articles {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+}
+
+.article {
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.article img {
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.article:hover img {
+    transform: scale(1.05);
+}
+
+.article-content {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.7); */
+   
+    
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 100%;
+    height:90px;
+    width:120%;
+}
+
+.article-content p {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-bottom: px;
+}
+
+.article-content h2 {
+    margin: 5px 0;
+    font-size: 1.5rem;
+    font-size:15px;
+}
+
+/* Floating Buttons */
+.floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.floating-buttons .btn {
+    background: white;
+    color: black;
+    padding: 10px;
+    border-radius: 50%;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.floating-buttons .btn:hover {
+    background:white;
+    color: white;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.slide-up {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 1s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.text2{
+    color:black;
+    text-align: center;
+  
+ 
+      font-size:30px;
+}
+.logo1{
+    margin-left:400px;
+    height:45px;
+}
+.container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            margin: 10px;
+            width: 30%;
+            /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+            border-radius: 8px;
+            overflow: hidden;
+            border:none;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+           
+            
+        }
+        .card-content {
+            padding: 15px;
+            text-align: center;
+        }
+        .date {
+            color: rgb(249, 127, 127);
+            font-weight: bold;
+            font-size:13px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: black;
+        }
+        .img01{
+            height:50px;
+        }
+    
+
+
+     </style>
+ </head>
+ <body>
+     <header>
+         <nav>
+             <div class="logo"><img src="images/fer.jpg" alt="Ferrari Logo"></div>
+             <ul>
+                 <li><a href="#" class="active">RACING</a></li>
+                 <li><a href="#">SPORTS CARS</a></li>
+                 <li><a href="#">COLLECTIONS</a></li>
+                 <li><a href="#">EXPERIENCES</a></li>
+                 <li><a href="#">ABOUT US</a></li>
+             </ul>
+             <div class="search">SEARCH</div>
+         </nav>
+     </header>
+     <main>
+         <!-- <section class="hero">
+             <div class="overlay"></div>
+             <h1>CORSE CLIENTI</h1>
+         </section> -->
+         <img src="images/logo.jpg"class="logo1">
+         <h2 class="text2">NEWS</h2>
+         <section class="articles">
+             <div class="article fade-in">
+                 <img src="images/f2.jpg" alt="Ferrari Challenge">
+                 <div class="article-content slide-up">
+                     <p>3 DAYS — FERRARI CHALLENGE EUROPE</p>
+                     <h2>THE FERRARI CHALLENGE EUROPE 2025 GETS UNDERWAY IN MONZA</h2>
+                 </div>
+             </div>
+             <div class="article fade-in">
+                 <img src="images/car2.jpg" alt="Ferrari 499P">
+                 <div class="article-content slide-up">
+                     <p>1 DAY — XX PROGRAMME, F1 CLIENTI, SPORT PROTOTIPI CLIENTI</p>
+                     <h2>TWELVE 499P MODIFICATA CARS AT MONZA</h2>
+                 </div>
+             </div>
+         </section>
+     </main>
+     
+     
+    <div class="container">
+        <div class="card">
+            <img src="images/car4.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">3 DAYS - CLUB COMPETIZIONI GT</span>
+                <p class="title">CLUB COMPETIZIONI GT IS BACK IN ACTION AT MONZA</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/car5.jpg" class="img01">
+            <div class="card-content">
+                <span class="date">8 DAYS - CLUB COMPETIZIONI GT</span>
+                <p class="title">CLUB COMPETIZIONI GT RESTARTS AT THE MONZA CIRCUIT</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/car6.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">20 MAR - FERRARI CHALLENGE EUROPE</span>
+                <p class="title">GREEN LIGHT AT MONZA FOR THE FERRARI CHALLENGE EUROPE 2025</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="card">
+            <img src="images/car7.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">19 MAR - xx PROGRAMME,F1 CLIENTI</span>
+                <p class="title">NON-COMPETITIVE TRACK ACTIVITIES GET UNDERWAY AT MONZA</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/man.jpg" class="img01">
+            <div class="card-content">
+                <span class="date">10 MAR-FERRARI CHALLENGE NORTH AMERICA</span>
+                <p class="title">SUNDAY WINNERS BASK IN SUCCESS AT SONOMA</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/cars.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">10 MAR-FERRARI CHALLENGE NORTH AMERICA</span>
+                <p class="title">PERRINA RECLAIMS VICTORY GREEN SWEEPS AT SONOMA</p>
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+        <div class="card">
+            <img src="images/man2.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">10 MAR - xx PROGRAMME,F1 CLIENTI</span>
+                <p class="title">FERRARI CHALLENGE CROWNS FIRST WINNERS OF 2025</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/car8.jpg" class="img01">
+            <div class="card-content">
+                <span class="date">09 MAR-FERRARI CHALLENGE NORTH AMERICA</span>
+                <p class="title">FRANCO, GREEN FINISH ON TOP IN FIRST FERRARI CHALLENGE RACE OF 2025</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/car4.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">09 MAR-FERRARI CHALLENGE NORTH AMERICA</span>
+                <p class="title">LAP AROUND SONOMA WITH BURROWERS</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <img src="images/mans.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">10 MAR - xx PROGRAMME,F1 CLIENTI</span>
+                <p class="title">FERRARI CHALLENGE CROWNS FIRST WINNERS OF 2025</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/man3.jpg" class="img01">
+            <div class="card-content">
+                <span class="date">19 MAR-FERRARI CHALLENGE EUROPE</span>
+                <p class="title">WINNER'S COMMENTS FROM FERARI CHALLENGE EEUROPE RACE-2 AT IMOLA</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/man4.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">19OCT 2024-FINALI MONDIA</span>
+                <p class="title">WINNER'S COMMENTS FROM FERARI CHALLENGE NORTH AMERIC4 RACE-2 AT IMOLA</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="card">
+            <img src="images/car7.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">19 MAR - xx PROGRAMME,F1 CLIENTI</span>
+                <p class="title">NON-COMPETITIVE TRACK ACTIVITIES GET UNDERWAY AT MONZA</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/man.jpg" class="img01">
+            <div class="card-content">
+                <span class="date">10 MAR-FERRARI CHALLENGE NORTH AMERICA</span>
+                <p class="title">SUNDAY WINNERS BASK IN SUCCESS AT SONOMA</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/cars.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">10 MAR-FERRARI CHALLENGE NORTH AMERICA</span>
+                <p class="title">PERRINA RECLAIMS VICTORY GREEN SWEEPS AT SONOMA</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="card">
+            <img src="images/car7.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">10 MAR - xx PROGRAMME,F1 CLIENTI</span>
+                <p class="title">FERRARI CHALLENGE CROWNS FIRST WINNERS OF 2025</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/cars.jpg" class="img01">
+            <div class="card-content">
+                <span class="date">19 MAR-FERRARI CHALLENGE EUROPE</span>
+                <p class="title">WINNER'S COMMENTS FROM FERARI CHALLENGE EEUROPE RACE-2 AT IMOLA</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/car5.jpg" alt="Ferrari Racing">
+            <div class="card-content">
+                <span class="date">19OCT 2024-FINALI MONDIA</span>
+                <p class="title">WINNER'S COMMENTS FROM FERARI CHALLENGE NORTH AMERIC4 RACE-2 AT IMOLA</p>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>
