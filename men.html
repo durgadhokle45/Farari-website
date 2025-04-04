@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrari Men Collection</title>
+    <link rel="stylesheet" href="Collection.css">
+    <script defer src="Collection.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: white;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #000;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: black;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+            transition: left 0.3s;
+            padding: 20px;
+        }
+        .sidebar.open {
+            left: 0;
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #444;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-item {
+            text-align: center;
+            background: #111;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+        @media (max-width: 600px) {
+            .sidebar {
+                width: 100%;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuToggle = document.querySelector(".menu-toggle");
+            const sidebar = document.querySelector(".sidebar");
+            const closeBtn = document.querySelector(".close-btn");
+            
+            menuToggle.addEventListener("click", function() {
+                sidebar.classList.add("open");
+            });
+            
+            closeBtn.addEventListener("click", function() {
+                sidebar.classList.remove("open");
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo"> <img src="./img/download.jpeg" alt="Ferrari Logo"> </div>
+        <button class="menu-toggle">&#9776;</button>
+    </header>
+    <nav class="sidebar">
+        <button class="close-btn">&times;</button>
+        <h2>MEN</h2>
+        <ul>
+            <li><a href="#">Ready to Wear</a></li>
+            <li><a href="#">Accessories</a></li>
+            <li><a href="#">Lifestyle</a></li>
+            <li><a href="#">Footwear</a></li>
+            <li><a href="#">Travel & Leather</a></li>
+        </ul>
+    </nav>
+    <section class="products">
+        <div class="product-item">
+            <img src="./img/Double_Hero_Banner_3_4_D-3.webp" alt="New In Men">
+            <p>New In Men</p>
+        </div>
+        <div class="product-item">
+            <img src="./img/Double_Hero_Banner_3_4_D_scarpe.webp" alt="Gifts For Him">
+            <p>Gifts For Him</p>
+        </div>
+        <div class="product-item">
+            <img src="./img/22213f_104_2.jpg" alt="Accessories">
+            <p>Accessories</p>
+        </div>
+
+       
+    </section>
+</body>
+</html>

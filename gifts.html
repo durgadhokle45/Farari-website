@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ferrari Gifts for Him</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #000;
+      padding: 10px 20px;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .menu-toggle {
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    nav.sidebar {
+      position: fixed;
+      left: -100%;
+      top: 0;
+      width: 250px;
+      height: 100%;
+      background: #111;
+      color: white;
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+
+    nav.sidebar.open {
+      left: 0;
+    }
+
+    nav.sidebar .close-btn {
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    nav.sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav.sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px 0;
+      border-bottom: 1px solid #444;
+    }
+
+    .gift-section {
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .gift-item {
+      background: #111;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .gift-item img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 20px;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="./img/download.jpeg" alt="Ferrari Logo">
+    </div>
+    <button class="menu-toggle">&#9776;</button>
+  </header>
+
+  <nav class="sidebar">
+    <button class="close-btn">&times;</button>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Men</a></li>
+      <li><a href="#">Women</a></li>
+      <li><a href="#">Gifts</a></li>
+      <li><a href="#">Accessories</a></li>
+    </ul>
+  </nav>
+
+  <section class="gift-section">
+    <div class="gift-item">
+      <img src="./img/keychain.jpeg" alt="Ferrari Keychain">
+      <p>Ferrari Keychain</p>
+    </div>
+    <div class="gift-item">
+      <img src="./img/cap.jpeg" alt="Ferrari Cap">
+      <p>Ferrari Cap</p>
+    </div>
+    <div class="gift-item">
+      <img src="./img/mug.jpeg" alt="Ferrari Mug">
+      <p>Ferrari Mug</p>
+    </div>
+    <div class="gift-item">
+      <img src="./img/model car.jpeg" alt="Ferrari Model Car">
+      <p>Ferrari Model Car</p>
+    </div>
+  </section>
+
+  
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const sidebar = document.querySelector(".sidebar");
+    const closeBtn = document.querySelector(".close-btn");
+
+    menuToggle.addEventListener("click", () => {
+      sidebar.classList.add("open");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+    });
+  </script>
+</body>
+</html>
