@@ -1,0 +1,2598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scuderia Ferrari | Racing Legacy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        :root {
+            --ferrari-red: #e32121;
+            --ferrari-yellow: #ffd700;
+            --dark-bg: #0a0a0a;
+            --light-text: #f8f8f8;
+            --card-bg: #1a1a1a;
+            --section-padding: 5rem 2rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Arial', sans-serif;
+        }
+        
+        @font-face {
+            font-family: 'Ferrari';
+            src: url('https://www.ferrari.com/fonts/ferrari-font.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.5));
+            padding: 1.5rem 3rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-bottom: 1px solid rgba(227, 33, 33, 0.1);
+        }
+        
+        header.scrolled {
+            background: rgba(10, 10, 10, 0.98);
+            padding: 1rem 3rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            height: 70px;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 0 5px rgba(227, 33, 33, 0.5));
+        }
+        
+        header.scrolled .logo {
+            height: 50px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--ferrari-red);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--ferrari-red);
+            transition: width 0.4s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: white;
+            font-size: 1.8rem;
+            transition: transform 0.3s;
+        }
+        
+        .hamburger.active {
+            transform: rotate(90deg);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1617654116851-6c8b5fb3e47d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            background: linear-gradient(transparent, var(--dark-bg));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--ferrari-red);
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+            font-family: 'Ferrari', sans-serif;
+            line-height: 1.1;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            line-height: 1.6;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--ferrari-red);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 2px solid var(--ferrari-red);
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(227, 33, 33, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--ferrari-red);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(227, 33, 33, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--ferrari-red);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--ferrari-red);
+            color: white;
+        }
+        
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+        
+        .countdown-item {
+            text-align: center;
+            background: rgba(26, 26, 26, 0.7);
+            padding: 1.5rem;
+            border-radius: 10px;
+            min-width: 100px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(227, 33, 33, 0.2);
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--ferrari-red);
+            margin-bottom: 0.5rem;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ccc;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: var(--section-padding);
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--ferrari-red);
+            position: relative;
+            font-family: 'Ferrari', sans-serif;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--ferrari-red);
+            margin: 1rem auto 0;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.2rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        /* Models Section */
+        .models-section {
+            background-color: var(--dark-bg);
+        }
+        
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .car-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .car-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(227, 33, 33, 0.3);
+        }
+        
+        .car-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .car-card:hover .car-image img {
+            transform: scale(1.1);
+        }
+        
+        .car-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--ferrari-red);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+        
+        .car-info {
+            padding: 2rem;
+        }
+        
+        .car-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--ferrari-yellow);
+            font-family: 'Ferrari', sans-serif;
+        }
+        
+        .car-info p {
+            margin-bottom: 1.5rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        .specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .spec-item {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .spec-item:hover {
+            background: rgba(227, 33, 33, 0.2);
+        }
+        
+        .spec-item span {
+            display: block;
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+        
+        .spec-item strong {
+            font-size: 1.3rem;
+            color: white;
+        }
+        
+        /* Team Section */
+        .team-section {
+            background: linear-gradient(rgba(10,10,10,0.9), rgba(10,10,10,0.9)), 
+                        url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .team-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(227, 33, 33, 0.3);
+        }
+        
+        .team-image {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--ferrari-red);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .team-info {
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .team-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--ferrari-red);
+            font-family: 'Ferrari', sans-serif;
+        }
+        
+        .team-role {
+            color: var(--ferrari-yellow);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .team-info p {
+            margin-bottom: 1.5rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--ferrari-red);
+            transform: translateY(-3px);
+        }
+        
+        /* Racing Programs Section */
+        .programs-section {
+            background-color: var(--dark-bg);
+        }
+        
+        .programs-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .program-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 2rem;
+            background-color: transparent;
+            color: white;
+            border: 2px solid var(--ferrari-red);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--ferrari-red);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .program-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-left: 5px solid var(--ferrari-red);
+        }
+        
+        .program-card h3 {
+            color: var(--ferrari-red);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            font-family: 'Ferrari', sans-serif;
+        }
+        
+        .program-card p {
+            margin-bottom: 2rem;
+            flex-grow: 1;
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .program-image {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 2rem;
+            position: relative;
+        }
+        
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+        
+        .program-card:hover .program-image img {
+            transform: scale(1.05);
+        }
+        
+        .program-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat-item:hover {
+            background: rgba(227, 33, 33, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--ferrari-red);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Memberships Section */
+        .membership-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-item {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--ferrari-yellow);
+            transition: all 0.4s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(227, 33, 33, 0.2);
+        }
+        
+        .benefit-item h4 {
+            color: var(--ferrari-yellow);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .benefit-item h4 i {
+            font-size: 1.5rem;
+        }
+        
+        .benefit-item p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        /* Racing Section */
+        .racing-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+        
+        .racing-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .racing-content h2 {
+            color: var(--ferrari-red);
+            margin-bottom: 2rem;
+            font-size: 3rem;
+            font-family: 'Ferrari', sans-serif;
+        }
+        
+        .racing-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            background-color: var(--dark-bg);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--ferrari-red), var(--ferrari-yellow));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            right: -15px;
+            background-color: var(--ferrari-yellow);
+            border: 4px solid var(--ferrari-red);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(227, 33, 33, 0.5);
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .right::after {
+            left: -15px;
+        }
+        
+        .timeline-content {
+            padding: 30px;
+            background-color: var(--card-bg);
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: all 0.4s;
+        }
+        
+        .timeline-item:hover .timeline-content {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(227, 33, 33, 0.3);
+        }
+        
+        .timeline-content h3 {
+            color: var(--ferrari-yellow);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .timeline-content p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        .timeline-year {
+            position: absolute;
+            top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--ferrari-red);
+        }
+        
+        .left .timeline-year {
+            right: -80px;
+        }
+        
+        .right .timeline-year {
+            left: -80px;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            background-color: var(--card-bg);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.4s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(227, 33, 33, 0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-overlay h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-overlay p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(rgba(10,10,10,0.9), rgba(10,10,10,0.9)), 
+                        url('https://images.unsplash.com/photo-1607860108855-64acf2078ed9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 1.5rem;
+            color: var(--ferrari-red);
+            font-size: 3rem;
+            font-family: 'Ferrari', sans-serif;
+        }
+        
+        .newsletter p {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #ccc;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .newsletter-form input::placeholder {
+            color: #ccc;
+        }
+        
+        .newsletter-form button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            padding: 0 2rem;
+            background-color: var(--ferrari-red);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #c11a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(227, 33, 33, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 5rem 2rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(227, 33, 33, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--ferrari-red);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--ferrari-red);
+        }
+        
+        .footer-links a i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--ferrari-red);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            overflow: auto;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .modal.show {
+            opacity: 1;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin-top: 5vh;
+            animation: zoomIn 0.3s;
+        }
+        
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 2;
+        }
+        
+        .close:hover {
+            color: var(--ferrari-red);
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--ferrari-red);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(227, 33, 33, 0.4);
+            font-size: 1.5rem;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: #c11a1a;
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Car Configuration Tool */
+        .configurator {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .config-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .config-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .step.active .step-number {
+            background-color: var(--ferrari-red);
+            color: white;
+        }
+        
+        .step-label {
+            color: #ccc;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .step.active .step-label {
+            color: var(--ferrari-yellow);
+        }
+        
+        .config-content {
+            display: none;
+        }
+        
+        .config-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .config-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .option-card {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .option-card.selected {
+            border-color: var(--ferrari-red);
+            background-color: rgba(227, 33, 33, 0.1);
+        }
+        
+        .option-image {
+            height: 100px;
+            margin-bottom: 1rem;
+        }
+        
+        .option-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .option-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .option-price {
+            color: var(--ferrari-yellow);
+            font-size: 0.9rem;
+        }
+        
+        .config-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .config-preview {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .preview-image {
+            max-width: 100%;
+            height: 300px;
+            object-fit: contain;
+            margin-bottom: 2rem;
+        }
+        
+        .preview-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .preview-spec {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        
+        .preview-spec h4 {
+            color: var(--ferrari-yellow);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .preview-spec p {
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Calendar Section */
+        .calendar-section {
+            background-color: var(--dark-bg);
+        }
+        
+        .calendar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .calendar-title {
+            color: var(--ferrari-red);
+            font-size: 1.5rem;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .event-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(227, 33, 33, 0.3);
+        }
+        
+        .event-date {
+            background-color: var(--ferrari-red);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .event-month {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .event-day {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+        }
+        
+        .event-title {
+            color: var(--ferrari-yellow);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .event-location {
+            color: #ccc;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .event-desc {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        /* Swiper Slider */
+        .swiper {
+            width: 100%;
+            height: 500px;
+            margin: 3rem 0;
+        }
+        
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .swiper-pagination-bullet {
+            background: white;
+            opacity: 0.6;
+            width: 12px;
+            height: 12px;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--ferrari-red);
+            opacity: 1;
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+        }
+        
+        .swiper-button-next::after, .swiper-button-prev::after {
+            font-size: 1.5rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0;
+            }
+            
+            .left .timeline-year, .right .timeline-year {
+                position: relative;
+                right: auto;
+                left: auto;
+                top: auto;
+                margin-bottom: 0.5rem;
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background-color: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 2rem;
+                padding-top: 3rem;
+                transition: left 0.4s;
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero {
+                min-height: 700px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+                letter-spacing: 3px;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .newsletter-form input {
+                border-radius: 50px;
+                width: 100%;
+            }
+            
+            .newsletter-form button {
+                position: relative;
+                width: 100%;
+                top: auto;
+                right: auto;
+                bottom: auto;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-column {
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                right: 20px;
+                bottom: 20px;
+            }
+            
+            .swiper {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+            
+            header.scrolled {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .logo {
+                height: 50px;
+            }
+            
+            header.scrolled .logo {
+                height: 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cars-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+            
+            .countdown-item {
+                min-width: calc(50% - 1rem);
+            }
+            
+            .program-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .program-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .configurator {
+                padding: 2rem 1.5rem;
+            }
+            
+            .config-steps {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .step {
+                width: calc(50% - 0.5rem);
+            }
+            
+            .swiper {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+           <a href="index.html"><img src="images/hourse_logo.webp" alt="Ferrari Logo" class="logo"></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#models">Models</a></li>
+                <li><a href="#team">Scuderia</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#racing">Racing</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <!-- <li><a href="#configurator">Configurator</a></li> -->
+                <li><a href="#calendar">Calendar</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Scuderia Ferrari</h1>
+            <p>The most successful team in Formula 1 history, with a legacy of passion, innovation and racing excellence that spans over seven decades.</p>
+            <div class="hero-btns">
+                <a href="#team" class="btn">Meet The Team</a>
+                <a href="#racing" class="btn btn-outline">Racing Heritage</a>
+            </div>
+            
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section models-section" id="models">
+        <h2 class="section-title">Ferrari Racing Models</h2>
+        <p class="section-subtitle">Experience the pinnacle of performance with Ferrari's track-inspired road cars and dedicated racing machines</p>
+        
+        <div class="cars-grid">
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari SF90 Stradale">
+                    <div class="car-badge">Hybrid</div>
+                </div>
+                <div class="car-info">
+                    <h3>SF90 Stradale</h3>
+                    <p>The most powerful Ferrari ever with hybrid technology derived from Formula 1, delivering unprecedented performance.</p>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span>Power</span>
+                            <strong>986 HP</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>0-60 mph</span>
+                            <strong>2.5s</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>Top Speed</span>
+                            <strong>211 mph</strong>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">Configure Yours</a>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari 488 Pista">
+                    <div class="car-badge">Track Focused</div>
+                </div>
+                <div class="car-info">
+                    <h3>488 Pista</h3>
+                    <p>The track-focused evolution of the 488 GTB with extreme aerodynamics and weight reduction for maximum performance.</p>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span>Power</span>
+                            <strong>711 HP</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>0-60 mph</span>
+                            <strong>2.85s</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>Top Speed</span>
+                            <strong>211 mph</strong>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">Explore Details</a>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari F8 Tributo">
+                    <div class="car-badge">V8 Turbo</div>
+                </div>
+                <div class="car-info">
+                    <h3>F8 Tributo</h3>
+                    <p>The mid-rear-engined sports car that represents the highest expression of the company's classic two-seater layout.</p>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span>Power</span>
+                            <strong>710 HP</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>0-60 mph</span>
+                            <strong>2.9s</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>Top Speed</span>
+                            <strong>211 mph</strong>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">View Gallery</a>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-image">
+                    <img src="https://images.unsplash.com/photo-1606220838315-056192d5e927?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari 812 Superfast">
+                    <div class="car-badge">V12 Power</div>
+                </div>
+                <div class="car-info">
+                    <h3>812 Superfast</h3>
+                    <p>The most powerful and fastest road-going Ferrari in history (until the SF90), featuring a monumental V12 engine.</p>
+                    <div class="specs">
+                        <div class="spec-item">
+                            <span>Power</span>
+                            <strong>789 HP</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>0-60 mph</span>
+                            <strong>2.9s</strong>
+                        </div>
+                        <div class="spec-item">
+                            <span>Top Speed</span>
+                            <strong>211 mph</strong>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">Experience It</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section team-section" id="team">
+        <h2 class="section-title">Scuderia Ferrari HP</h2>
+        <p class="section-subtitle">The champions who carry the Prancing Horse legacy on the world's most prestigious circuits</p>
+        
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/leclerc.jpg.img.1920.medium.jpg/1677069783817.jpg" alt="Charles Leclerc">
+                    <div class="team-number">16</div>
+                </div>
+                <div class="team-info">
+                    <h3>Charles Leclerc</h3>
+                    <span class="team-role">Lead Driver</span>
+                    <p>Monégasque racing driver who joined Scuderia Ferrari in 2019. Known for his exceptional qualifying pace and racecraft.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <a href="#" class="btn">View Stats</a>
+                </div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/hamilton.jpg.img.1920.medium.jpg/1677069594164.jpg" alt="Lewis Hamilton">
+                    <div class="team-number">44</div>
+                </div>
+                <div class="team-info">
+                    <h3>Lewis Hamilton</h3>
+                    <span class="team-role">Driver (2025)</span>
+                    <p>Seven-time World Champion joining Ferrari in 2025. The most successful driver in F1 history with 103 wins.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <a href="#" class="btn">Career Highlights</a>
+                </div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="images/Maurizio Arrivabene.jpg" alt="Esports Team">
+                    <div class="team-number">F1</div>
+                </div>
+                <div class="team-info">
+                    <h3>Esports Team</h3>
+                    <span class="team-role">Virtual Racing</span>
+                    <p>Competing in F1 Esports Series and other virtual racing competitions worldwide with cutting-edge simulators.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitch"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                    <a href="#" class="btn">Watch Streams</a>
+                </div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="images/Michael Schumacher.webp" alt="Driver Academy">
+                    <div class="team-number">SFD</div>
+                </div>
+                <div class="team-info">
+                    <h3>Driver Academy</h3>
+                    <span class="team-role">Future Champions</span>
+                    <p>Developing young talent through rigorous training and competition programs to find Ferrari's next World Champion.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fas fa-globe"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <a href="#" class="btn">Meet The Prospects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section programs-section" id="programs">
+        <div class="programs-container">
+            <h2 class="section-title">Racing Programs</h2>
+            <p class="section-subtitle">Ferrari's commitment to motorsport excellence across multiple disciplines</p>
+            
+            <div class="program-tabs">
+                <button class="tab-btn active" data-tab="hypercar">Hypercar</button>
+                <button class="tab-btn" data-tab="gt">GT Series</button>
+                <button class="tab-btn" data-tab="membership">Scuderia Membership</button>
+            </div>
+            
+            <div class="tab-content active" id="hypercar">
+                <div class="program-card">
+                    <h3>Hypercar Program</h3>
+                    <p>Ferrari's triumphant return to top-class endurance racing with the 499P Hypercar, winner of the 2023 24 Hours of Le Mans. The program represents Ferrari's commitment to innovation and excellence in sports car racing, combining cutting-edge hybrid technology with Ferrari's legendary racing heritage.</p>
+                    
+                    <div class="program-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">1st</div>
+                            <div class="stat-label">2023 Le Mans</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">680 HP</div>
+                            <div class="stat-label">Hybrid Power</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">217 mph</div>
+                            <div class="stat-label">Top Speed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3.2s</div>
+                            <div class="stat-label">0-60 mph</div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-image">
+                        <img src="images/blue2.jpg" alt="Ferrari 499P Hypercar">
+                    </div>
+                    <a href="#" class="btn">Explore Hypercar</a>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="gt">
+                <div class="program-card">
+                    <h3>GT Series</h3>
+                    <p>Ferrari's successful GT racing program featuring the 296 GT3 and 488 GTE models. Competing in championships worldwide including WEC, IMSA, and GT World Challenge with numerous victories. The GT program serves as both a customer racing initiative and a platform for developing future racing technologies.</p>
+                    
+                    <div class="program-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">600+</div>
+                            <div class="stat-label">Race Wins</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">120</div>
+                            <div class="stat-label">Teams Worldwide</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">30</div>
+                            <div class="stat-label">Championships</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2012-2023</div>
+                            <div class="stat-label">Le Mans Class Wins</div>
+                        </div>
+                    </div>
+                    
+                    <div class="program-image">
+                        <img src="https://www.ferrari.com/en-EN/auto/ferrari-296-gtb" alt="Ferrari GT Car">
+                    </div>
+                    <a href="#" class="btn">View GT Racing</a>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="membership">
+                <div class="program-card">
+                    <h3>Scuderia Ferrari Member</h3>
+                    <p>Join the official Scuderia Ferrari membership program for exclusive access, behind-the-scenes content, and special privileges as part of the Ferrari racing family. Experience the passion of Ferrari like never before with unprecedented access to the team and its drivers.</p>
+                    
+                    <div class="membership-benefits">
+                        <div class="benefit-item">
+                            <h4><i class="fas fa-ticket-alt"></i> Priority Tickets</h4>
+                            <p>Early access to race tickets, VIP packages, and exclusive events at circuits around the world.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <h4><i class="fas fa-user-shield"></i> Behind The Scenes</h4>
+                            <p>Exclusive team updates, garage tours, and technical insights from Ferrari engineers.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <h4><i class="fas fa-shopping-bag"></i> Member Store</h4>
+                            <p>Access to limited edition merchandise and discounts on official Scuderia Ferrari products.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <h4><i class="fas fa-video"></i> Digital Experiences</h4>
+                            <p>Virtual meetups with drivers, team principal Q&As, and exclusive video content.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <h4><i class="fas fa-trophy"></i> Racing Academy</h4>
+                            <p>Opportunities to attend Ferrari Driver Academy events and meet future stars.</p>
+                        </div>
+                        <div class="benefit-item">
+                            <h4><i class="fas fa-flag-checkered"></i> Track Days</h4>
+                            <p>Member-only events at Ferrari-owned circuits with driving experiences.</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn">Become a Member</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section racing-section" id="racing">
+        <div class="racing-content">
+            <h2 class="section-title">Ferrari in Motorsport</h2>
+            <p>Ferrari's racing heritage is unmatched in the world of motorsports. With countless victories in Formula 1, endurance racing, and GT competitions, Ferrari's racing DNA is present in every road car they produce. The Scuderia Ferrari Formula 1 team is the oldest and most successful team in F1 history, with 16 Constructors' Championships and 15 Drivers' Championships to their name.</p>
+            <p>Ferrari's GT racing program continues to dominate tracks around the world, with the 488 GTE and GT3 cars winning major endurance races including the 24 Hours of Le Mans. The new 499P Hypercar marks Ferrari's return to top-tier endurance racing, already claiming victory at Le Mans in its debut season.</p>
+            <a href="#" class="btn">View Championship History</a>
+        </div>
+    </section>
+
+    <section class="section timeline-section" id="history">
+        <h2 class="section-title">Ferrari Racing History</h2>
+        <p class="section-subtitle">Seven decades of passion, innovation and unparalleled success in motorsport</p>
+        
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-year">1947</div>
+                    <h3>First Ferrari</h3>
+                    <p>The 125 S, Ferrari's first car, debuts at the Piacenza Circuit on May 11, 1947, driven by Franco Cortese. This marks the beginning of Ferrari's legendary racing heritage.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-year">1950</div>
+                    <h3>Formula 1 Debut</h3>
+                    <p>Ferrari becomes one of the founding teams of the Formula 1 World Championship, the only team to compete in every season since the championship began.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-year">1952</div>
+                    <h3>First F1 Title</h3>
+                    <p>Alberto Ascari wins Ferrari's first Drivers' Championship, beginning a legacy of dominance that would see Ferrari become the most successful team in F1 history.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-year">1961</div>
+                    <h3>Sharknose Dominance</h3>
+                    <p>The famous Ferrari 156 "Sharknose" dominates the season with Phil Hill winning the championship. The car's distinctive design becomes iconic in motorsport history.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-year">1975</div>
+                    <h3>Niki Lauda Era</h3>
+                    <p>Niki Lauda wins Ferrari's first Drivers' Championship in 11 years with the 312 T, beginning a period of renewed success for the Scuderia.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-year">2000-2004</div>
+                    <h3>Schumacher Dominance</h3>
+                    <p>Michael Schumacher wins five consecutive Drivers' Championships with Ferrari, matching Juan Manuel Fangio's record and securing Ferrari's place as the most successful team in F1.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-year">2023</div>
+                    <h3>Le Mans Victory</h3>
+                    <p>Ferrari returns to top-class endurance racing and wins the 24 Hours of Le Mans with the 499P hypercar, 58 years after its last overall victory at the legendary race.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section gallery-section" id="gallery">
+        <h2 class="section-title">Ferrari Racing Gallery</h2>
+        <p class="section-subtitle">Iconic moments and machines from Ferrari's storied racing history</p>
+        
+        <!-- Swiper Slider -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari F1 Car">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1617654116851-6c8b5fb3e47d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari Pit Crew">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari 488 GTE">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari Classic">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari 488 Pista">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1616788494707-ec28f08d05a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari F1 Car">
+                <div class="gallery-overlay">
+                    <h3>SF-23 Formula 1 Car</h3>
+                    <p>2023 Championship Contender</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1617654116851-6c8b5fb3e47d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari Pit Crew">
+                <div class="gallery-overlay">
+                    <h3>Scuderia Ferrari Pit Crew</h3>
+                    <p>World's fastest pit stops</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari 488 GTE">
+                <div class="gallery-overlay">
+                    <h3>488 GTE at Le Mans</h3>
+                    <p>Multiple class victories</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari Classic">
+                <div class="gallery-overlay">
+                    <h3>250 GTO</h3>
+                    <p>The most valuable car in the world</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari 488 Pista">
+                <div class="gallery-overlay">
+                    <h3>488 Pista on Track</h3>
+                    <p>Track-focused performance</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ferrari F8 Tributo">
+                <div class="gallery-overlay">
+                    <h3>F8 Tributo in Action</h3>
+                    <p>Tribute to Ferrari's V8 legacy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section calendar-section" id="calendar">
+        <h2 class="section-title">Racing Calendar</h2>
+        <p class="section-subtitle">Follow Scuderia Ferrari throughout the season</p>
+        
+        <div class="calendar-container">
+            <div class="calendar-nav">
+                <h3 class="calendar-title">2024 Formula 1 Season</h3>
+                <div class="calendar-filter">
+                    <button class="btn btn-outline">All Events</button>
+                    <button class="btn btn-outline">Race Weekends</button>
+                    <button class="btn btn-outline">Testing</button>
+                </div>
+            </div>
+            
+            <div class="calendar-grid">
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-month">Mar</div>
+                        <div class="event-day">2</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Bahrain Grand Prix</h3>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bahrain International Circuit</span>
+                        </div>
+                        <p class="event-desc">Season opener under the lights at the Bahrain International Circuit, where Ferrari looks to start the season strong.</p>
+                        <a href="#" class="btn">Event Details</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-month">Mar</div>
+                        <div class="event-day">9</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Saudi Arabian GP</h3>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jeddah Corniche Circuit</span>
+                        </div>
+                        <p class="event-desc">High-speed street circuit in Jeddah where Ferrari aims to capitalize on its straight-line speed advantage.</p>
+                        <a href="#" class="btn">Event Details</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-month">Apr</div>
+                        <div class="event-day">7</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Japanese Grand Prix</h3>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Suzuka Circuit</span>
+                        </div>
+                        <p class="event-desc">The legendary Suzuka circuit tests both man and machine with its demanding figure-eight layout.</p>
+                        <a href="#" class="btn">Event Details</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-month">May</div>
+                        <div class="event-day">5</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Miami Grand Prix</h3>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Miami International Autodrome</span>
+                        </div>
+                        <p class="event-desc">The glamorous Miami race brings F1 to the streets of Florida with a vibrant atmosphere.</p>
+                        <a href="#" class="btn">Event Details</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-month">Jun</div>
+                        <div class="event-day">9</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Canadian Grand Prix</h3>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Circuit Gilles Villeneuve</span>
+                        </div>
+                        <p class="event-desc">The Circuit Gilles Villeneuve in Montreal is a fan favorite with its Wall of Champions challenge.</p>
+                        <a href="#" class="btn">Event Details</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <div class="event-month">Jun</div>
+                        <div class="event-day">23</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">24 Hours of Le Mans</h3>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Circuit de la Sarthe</span>
+                        </div>
+                        <p class="event-desc">Ferrari defends its 2023 victory in the world's most prestigious endurance race.</p>
+                        <a href="#" class="btn">Event Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter" id="contact">
+        <h2>Join the Scuderia Ferrari Community</h2>
+        <p>Subscribe to our newsletter for exclusive updates, behind-the-scenes content, and early access to tickets and events.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe <i class="fas fa-arrow-right"></i></button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Scuderia Ferrari</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> F1 Team</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Drivers</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Heritage</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Esports</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Driver Academy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Racing Programs</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Formula 1</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Hypercar</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> GT Series</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Challenge</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Client Racing</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Experience</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Museum</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Factory Tours</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Driving Experiences</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Events</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Store</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <h3 style="margin-top: 2rem;">Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-envelope"></i> info@ferrari.com</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +39 0536 949111</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Maranello, Italy</a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </footer>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Image gallery modal
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeModal = document.querySelector('.close');
+        
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'block';
+                modal.classList.add('show');
+                modalImg.src = img.src;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
+        });
+        
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input').value;
+            alert(`Thank you for subscribing with ${email}! You'll receive our latest Ferrari racing news soon.`);
+            newsletterForm.reset();
+        });
+        
+        // Countdown timer to next race
+        function updateCountdown() {
+            // Set the date of the next race (example: Bahrain GP 2024)
+            const nextRaceDate = new Date('2024-03-02T16:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = nextRaceDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById('countdown').innerHTML = '<div class="race-now">Race is happening now!</div>';
+            }
+        }
+        
+        updateCountdown();
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        
+        // Program tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Car configurator
+        const steps = document.querySelectorAll('.step');
+        const stepContents = document.querySelectorAll('.config-content');
+        const nextButtons = document.querySelectorAll('.next-step');
+        const prevButtons = document.querySelectorAll('.prev-step');
+        const optionCards = document.querySelectorAll('.option-card');
+        
+        // Next step functionality
+        nextButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentStep = document.querySelector('.step.active');
+                const currentStepNum = parseInt(currentStep.getAttribute('data-step'));
+                const nextStepNum = currentStepNum + 1;
+                
+                if (nextStepNum <= steps.length) {
+                    steps.forEach(step => step.classList.remove('active'));
+                    stepContents.forEach(content => content.classList.remove('active'));
+                    
+                    document.querySelector(`.step[data-step="${nextStepNum}"]`).classList.add('active');
+                    document.getElementById(`step-${nextStepNum}`).classList.add('active');
+                    
+                    // Scroll to top of configurator
+                    document.getElementById('configurator').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Previous step functionality
+        prevButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentStep = document.querySelector('.step.active');
+                const currentStepNum = parseInt(currentStep.getAttribute('data-step'));
+                const prevStepNum = currentStepNum - 1;
+                
+                if (prevStepNum >= 1) {
+                    steps.forEach(step => step.classList.remove('active'));
+                    stepContents.forEach(content => content.classList.remove('active'));
+                    
+                    document.querySelector(`.step[data-step="${prevStepNum}"]`).classList.add('active');
+                    document.getElementById(`step-${prevStepNum}`).classList.add('active');
+                    
+                    // Scroll to top of configurator
+                    document.getElementById('configurator').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Option selection in configurator
+        optionCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const parent = card.parentElement;
+                parent.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                
+                // Update preview based on selection
+                if (card.hasAttribute('data-model')) {
+                    const model = card.getAttribute('data-model');
+                    const modelName = card.querySelector('.option-name').textContent;
+                    document.getElementById('preview-model').textContent = modelName;
+                    
+                    // In a real implementation, you would change the car image based on model
+                    // document.getElementById('config-preview').src = `path/to/${model}-image.png`;
+                }
+                
+                if (card.hasAttribute('data-color')) {
+                    const colorName = card.querySelector('.option-name').textContent;
+                    document.getElementById('preview-color').textContent = colorName;
+                    
+                    // In a real implementation, you would change the car color
+                    // This is a simplified version
+                    const color = card.getAttribute('data-color');
+                    const previewImg = document.getElementById('config-preview');
+                    
+                    if (color === 'rosso-corsa') {
+                        previewImg.style.filter = 'hue-rotate(0deg)';
+                    } else if (color === 'giallo-modena') {
+                        previewImg.style.filter = 'hue-rotate(40deg) saturate(2)';
+                    } else if (color === 'nero-daytona') {
+                        previewImg.style.filter = 'grayscale(1) brightness(0.5)';
+                    } else if (color === 'blu-tour-de-france') {
+                        previewImg.style.filter = 'hue-rotate(200deg) saturate(1.5)';
+                    }
+                }
+                
+                // Update price (simplified)
+                if (card.querySelector('.option-price').textContent !== 'Included') {
+                    const priceText = card.querySelector('.option-price').textContent;
+                    const priceIncrease = parseInt(priceText.replace(/\D/g, ''));
+                    const basePrice = 625000;
+                    const totalPrice = basePrice + priceIncrease;
+                    document.getElementById('preview-price').textContent = '$' + totalPrice.toLocaleString();
+                }
+            });
+        });
+        
+        // Initialize Swiper
+        const swiper = new Swiper('.mySwiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+        
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.section-title, .car-card, .team-card, .program-card, .timeline-item, .gallery-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.section-title, .car-card, .team-card, .program-card, .timeline-item, .gallery-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        });
+        
+        // Run animation check on scroll and load
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
