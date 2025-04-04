@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Men Collection</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        nav{
+
+        nav {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -18,36 +20,97 @@
             width: 100%;
             background-color: aqua;
         }
-        nav img{
+
+        nav img {
             height: 93px;
         }
-        .main-heading{
-            height:24rem;
+
+        .main-heading {
+            height: 20rem;
             width: 100%;
-            background-color:burlywood;
+            background-color: burlywood;
             margin-top: 0px;
             text-align: center;
             justify-content: center;
             align-items: center;
-            display:flex;
+            display: flex;
+
+        }
+
+        .main-heading-1 p {
+            margin-top: 50px;
+            /* Adjust margin-top as needed */
+            font-size: 36px;
+            /* Optional */
+            font-weight: bold;
+            /* Optional */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .main-content {
+            display: flex;
+            height: 50rem;
+            width: 100%;
+            background-color: blueviolet;
+            display: grid;
+            grid-template-columns: 4fr 4fr 4fr 4fr;
+            justify-content: space-around;
+        }
+
+        .main-content .image {
+            display: flex;
+            height: 31rem;
+            width: 100%;
+            background-color: rgb(43, 217, 226);
+           
+
+        }
+
+        .main-content .info {
+            display: flex;
+            height: 13rem;
+            width: 100%;
+            background-color:#fff;
             
         }
-        .main-heading-1 p {
-            margin-top: 50px; /* Adjust margin-top as needed */
-            font-size: 36px;  /* Optional */
-            font-weight: bold; /* Optional */
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
         }
-        .main-content{
-            height:40rem;
-            width:100%;
-            background-color: blueviolet;
-                }
+
+        .main-div {
+            width: 22%;
+
+            /* Ensures four divs fit inside */
+        }
+        .one{
+            margin-left:60px;
+        }
+        .four{
+            margin-right: 60px;
+        }
+        .image img{
+            height: 31rem;
+            width: 100%;
+           
+        }
+        .info p{
+            font-size: 30px;
+            margin-top: 8px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+       
     </style>
 </head>
+
 <body>
     <nav>
-       <div> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6q9uNcTgToB5VbD9DdOQm7EBUt2W9bogf6s6QcCoBIuYjSYw2X4CTHoF6unHoLrJoxlE&usqp=CAU"></div>   
+        <div> <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6q9uNcTgToB5VbD9DdOQm7EBUt2W9bogf6s6QcCoBIuYjSYw2X4CTHoF6unHoLrJoxlE&usqp=CAU">
+        </div>
     </nav>
 
     <div class="main-heading">
@@ -56,14 +119,51 @@
         </div>
     </div>
 
-    <div claas="main-content">
-        <div class="images">
-
+    <div class="main-content ">
+        <div class="main-div one">
+            <div class="image">
+                <img src="images/shrt1.png">
+            </div>
+            <div class="info">
+                <p>Puma for Scuderia Ferrari HP 2025 Team T-shirt<br>
+                    €70<br><br><u>Shop this</u></p>
+            </div>
         </div>
 
-        <div class="info">
 
+        <div class="main-div">
+            <div class="image">
+                <img src="images/cap1.png">
+            </div>
+            <div class="info">
+                <p>Puma for Scuderia Ferrari HP 2025 Leclerc baseball cap
+                   <br>
+                   €45<br><br><u>Shop this</u></p>
+                
+            </div>
+        </div>
+
+
+        <div class="main-div">
+            <div class="image">
+                <img src="images/cap6.png">
+            </div>
+            <div class="info">
+                <p>Puma for Scuderia Ferrari HP 2025 Team baseball cap<br>
+                    €40<br><br><u>Shop this</u></p>
+            </div>
+        </div>
+
+        <div class="main-div four">
+            <div class="image">
+                <img src="images/shirt2.png">
+            </div>
+            <div class="info">
+                <p>Puma for Scuderia Ferrari HP 2025 Team polo shirt<br>
+                    €85<br><br><u>Shop this</u></p>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
