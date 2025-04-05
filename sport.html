@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferrari Sports Cars </title>
+    <title>Ferrari Sports Cars</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -92,6 +93,61 @@
             color: white;
             font-size: 24px;
             cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu .nav-links {
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+
+        .mobile-menu .nav-links li {
+            margin: 20px 0;
+        }
+
+        .mobile-menu .nav-links a {
+            font-size: 1.5rem;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu .nav-links a:hover {
+            color: var(--ferrari-red);
+        }
+
+        .close-menu-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
         }
 
         /* Hero Section */
@@ -111,7 +167,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
         }
 
         .hero-content {
@@ -493,7 +549,9 @@
             color: #ccc;
         }
 
-        .login-form {
+        .login-form,
+        .register-form,
+        .forgot-form {
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -536,14 +594,42 @@
             margin-right: 10px;
         }
 
-        .forgot-password {
+        .forgot-password,
+        .login-link,
+        .register-link {
             color: #aaa;
             text-decoration: none;
             font-size: 0.9rem;
         }
 
-        .forgot-password:hover {
+        .forgot-password:hover,
+        .login-link:hover,
+        .register-link:hover {
             color: var(--ferrari-red);
+        }
+
+        .form-toggle {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Form Alert Messages */
+        .form-alert {
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .form-alert.success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .form-alert.error {
+            background-color: #f44336;
+            color: white;
         }
 
         /* Pre-owned Section */
@@ -725,6 +811,11 @@
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 15px;
+            display: none;
+        }
+
+        .recall-item.active {
+            display: block;
         }
 
         .recall-item h4 {
@@ -803,7 +894,8 @@
             margin-bottom: 20px;
         }
 
-        .specs-table th, .specs-table td {
+        .specs-table th,
+        .specs-table td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #444;
@@ -965,51 +1057,25 @@
             background-color: #c11a1a;
         }
 
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
+        /* Form transitions */
+        .form-container {
+            position: relative;
+            min-height: 400px;
+        }
+
+        .form-page {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .mobile-menu.active {
+        .form-page.active {
             opacity: 1;
             visibility: visible;
-        }
-
-        .mobile-menu .nav-links {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .mobile-menu .nav-links li {
-            margin: 15px 0;
-        }
-
-        .mobile-menu .nav-links a {
-            font-size: 1.5rem;
-        }
-
-        .close-menu-btn {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
         }
 
         /* Responsive Styles */
@@ -1017,11 +1083,11 @@
             .hero h1 {
                 font-size: 2.8rem;
             }
-            
+
             .models-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
-            
+
             .download-item {
                 flex: 0 0 calc(50% - 10px);
             }
@@ -1031,43 +1097,52 @@
             .nav-links {
                 display: none;
             }
-            
+
             .mobile-menu-btn {
                 display: block;
             }
-            
+
             .hero h1 {
                 font-size: 2.2rem;
             }
-            
+
             .hero p {
                 font-size: 1rem;
             }
-            
+
             .section-title h2 {
                 font-size: 2rem;
             }
-            
+
             .configurator-options {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .option-group {
                 width: 100%;
                 max-width: 300px;
             }
-            
+
             .summary-item {
                 flex: 0 0 100%;
             }
-            
+
             .download-item {
                 flex: 0 0 100%;
             }
-            
+
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+
+            .vin-check {
+                flex-direction: column;
+            }
+
+            .vin-check button {
+                padding: 12px 0;
+                width: 100%;
             }
         }
 
@@ -1075,32 +1150,32 @@
             .hero h1 {
                 font-size: 1.8rem;
             }
-            
+
             .cta-button {
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
-            
+
             .model-specs {
                 flex-direction: column;
                 gap: 10px;
             }
-            
+
             .form-actions {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .remember-me {
                 width: 100%;
                 justify-content: flex-start;
             }
-            
+
             .footer-bottom {
                 flex-direction: column;
                 gap: 15px;
             }
-            
+
             .legal-links {
                 flex-direction: column;
                 gap: 10px;
@@ -1109,8 +1184,15 @@
 
         /* Animation */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .fade-in {
@@ -1128,13 +1210,21 @@
         .delay-3 {
             animation-delay: 0.6s;
         }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                text-align: center;
+                font-size: 23px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header>
         <div class="top-bar">
-            <a href="index.html"><img src="images/hourse_logo.webp" alt="Ferrari Logo" class="logo" style="font-size:40px; width: 100px; height: 50px;"></a>
+            <a href="index.html"><img src="images/hourse_logo.webp" alt="Ferrari Logo" class="logo"></a>
             <nav>
                 <ul class="nav-links">
                     <li class="active"><a href="#range">Range</a></li>
@@ -1172,7 +1262,8 @@
     <section class="hero" id="home">
         <div class="hero-content fade-in">
             <h1>Ferrari Sports Cars</h1>
-            <p class="delay-1">Experience the pinnacle of Italian engineering and design with our exclusive range of high-performance sports cars. Each Ferrari is a masterpiece of power, precision, and passion.</p>
+            <p class="delay-1">Experience the pinnacle of Italian engineering and design with our exclusive range of
+                high-performance sports cars. Each Ferrari is a masterpiece of power, precision, and passion.</p>
             <a href="#range" class="cta-button delay-2">Explore Models</a>
         </div>
     </section>
@@ -1186,11 +1277,13 @@
             <!-- SF90 Stradale -->
             <div class="model-card fade-in">
                 <div class="model-image">
-                    <img src="https://media.evo.co.uk/image/private/s--8p6kx9TZ--/f_auto,t_content-image-mobile@1/v1688029720/evo/2023/06/Ferrari%20SF90%20XX%20Stradale.jpg" alt="Ferrari SF90 Stradale">
+                    <img src="https://media.evo.co.uk/image/private/s--8p6kx9TZ--/f_auto,t_content-image-mobile@1/v1688029720/evo/2023/06/Ferrari%20SF90%20XX%20Stradale.jpg"
+                        alt="Ferrari SF90 Stradale">
                 </div>
                 <div class="model-info">
                     <h3>SF90 Stradale</h3>
-                    <p>The SF90 Stradale is Ferrari's first series production PHEV (Plug-in Hybrid Electric Vehicle), unleashing unprecedented performance.</p>
+                    <p>The SF90 Stradale is Ferrari's first series production PHEV (Plug-in Hybrid Electric Vehicle),
+                        unleashing unprecedented performance.</p>
                     <div class="model-specs">
                         <div class="spec-item">
                             <i class="fas fa-tachometer-alt"></i>
@@ -1216,11 +1309,13 @@
             <!-- 296 GTB -->
             <div class="model-card fade-in delay-1">
                 <div class="model-image">
-                    <img src="https://img.autocarindia.com/ExtraImages/20220913110005_296%201.jpg?w=700&c=1" alt="Ferrari 296 GTB">
+                    <img src="https://img.autocarindia.com/ExtraImages/20220913110005_296%201.jpg?w=700&c=1"
+                        alt="Ferrari 296 GTB">
                 </div>
                 <div class="model-info">
                     <h3>296 GTB</h3>
-                    <p>The 296 GTB redefines the whole concept of fun behind the wheel, guaranteeing pure emotions not just when pushing the car to its limits.</p>
+                    <p>The 296 GTB redefines the whole concept of fun behind the wheel, guaranteeing pure emotions not
+                        just when pushing the car to its limits.</p>
                     <div class="model-specs">
                         <div class="spec-item">
                             <i class="fas fa-tachometer-alt"></i>
@@ -1246,11 +1341,13 @@
             <!-- F8 Tributo -->
             <div class="model-card fade-in delay-2">
                 <div class="model-image">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR99_fD19DM-KDxYO5Xf2LXqlApknNssdQdg&s" alt="Ferrari F8 Tributo">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR99_fD19DM-KDxYO5Xf2LXqlApknNssdQdg&s"
+                        alt="Ferrari F8 Tributo">
                 </div>
                 <div class="model-info">
                     <h3>F8 Tributo</h3>
-                    <p>The F8 Tributo is the new mid-rear-engined sports car that represents the highest expression of the Prancing Horse's classic two-seater berlinetta.</p>
+                    <p>The F8 Tributo is the new mid-rear-engined sports car that represents the highest expression of
+                        the Prancing Horse's classic two-seater berlinetta.</p>
                     <div class="model-specs">
                         <div class="spec-item">
                             <i class="fas fa-tachometer-alt"></i>
@@ -1276,11 +1373,13 @@
             <!-- Roma -->
             <div class="model-card fade-in">
                 <div class="model-image">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1YI9AJzk5vk2o38W5vheVWyQVFZH35lm2NA&s" alt="Ferrari Roma">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1YI9AJzk5vk2o38W5vheVWyQVFZH35lm2NA&s"
+                        alt="Ferrari Roma">
                 </div>
                 <div class="model-info">
                     <h3>Roma</h3>
-                    <p>The Roma, a contemporary 2+ coupe featuring refined proportions and timeless design, represents the pinnacle of performance in this category.</p>
+                    <p>The Roma, a contemporary 2+ coupe featuring refined proportions and timeless design, represents
+                        the pinnacle of performance in this category.</p>
                     <div class="model-specs">
                         <div class="spec-item">
                             <i class="fas fa-tachometer-alt"></i>
@@ -1306,11 +1405,13 @@
             <!-- Portofino M -->
             <div class="model-card fade-in delay-1">
                 <div class="model-image">
-                    <img src="https://www.motortrend.com/uploads/sites/5/2021/05/2022-Ferrari-Portofino-M-2.jpg?w=768&width=768&q=75&format=webp" alt="Ferrari Portofino M">
+                    <img src="https://www.motortrend.com/uploads/sites/5/2021/05/2022-Ferrari-Portofino-M-2.jpg?w=768&width=768&q=75&format=webp"
+                        alt="Ferrari Portofino M">
                 </div>
                 <div class="model-info">
                     <h3>Portofino M</h3>
-                    <p>The Portofino M is the evolution of the Prancing Horse's 2+ GT spider. The 'M' stands for 'Modificata', which in Ferrari nomenclature refers to cars that have undergone an evolution.</p>
+                    <p>The Portofino M is the evolution of the Prancing Horse's 2+ GT spider. The 'M' stands for
+                        'Modificata', which in Ferrari nomenclature refers to cars that have undergone an evolution.</p>
                     <div class="model-specs">
                         <div class="spec-item">
                             <i class="fas fa-tachometer-alt"></i>
@@ -1332,8 +1433,6 @@
                     </div>
                 </div>
             </div>
-
-    
         </div>
     </section>
 
@@ -1351,11 +1450,12 @@
                     <h4>Exterior Color</h4>
                     <div class="color-options">
                         <div class="color-option selected" style="background-color: #e32121;" data-color="red"></div>
-                        <div class="color-option selected" style="background-color: #000000;" data-color="black"></div>
-                        <div class="color-option selected" style="background-color: #ffffff; border: 1px solid #ccc;" data-color="white"></div>
-                        <div class="color-option selected" style="background-color: #1e3a8a;" data-color="blue"></div>
-                        <div class="color-option selected" style="background-color: #f59e0b;" data-color="yellow"></div>
-                        <div class="color-option selected" style="background-color: #6b7280;" data-color="gray"></div>
+                        <div class="color-option" style="background-color: #000000;" data-color="black"></div>
+                        <div class="color-option" style="background-color: #ffffff; border: 1px solid #ccc;"
+                            data-color="white"></div>
+                        <div class="color-option" style="background-color: #1e3a8a;" data-color="blue"></div>
+                        <div class="color-option" style="background-color: #f59e0b;" data-color="yellow"></div>
+                        <div class="color-option" style="background-color: #6b7280;" data-color="gray"></div>
                     </div>
                 </div>
                 <div class="option-group fade-in delay-1">
@@ -1417,27 +1517,81 @@
             <h2>MyFerrari</h2>
         </div>
         <div class="myferrari-container fade-in">
-            <h2>Welcome to MyFerrari</h2>
-            <p>Access your personalized Ferrari experience. Track your order, manage your services, and connect with the Ferrari world.</p>
-            <form class="login-form">
-                <div class="form-group">
-                    <label for="username">Username or Email</label>
-                    <input type="text" id="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" required>
-                </div>
-                <div class="form-actions">
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember me</label>
+            <div class="form-container">
+                <!-- Login Form -->
+                <div class="form-page active" id="loginPage">
+                    <h2>Welcome to MyFerrari</h2>
+                    <p>Access your personalized Ferrari experience. Track your order, manage your services, and connect
+                        with the Ferrari world.</p>
+                    <form class="login-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="username">Username or Email</label>
+                            <input type="text" id="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" required>
+                        </div>
+                        <div class="form-actions">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <a href="#" class="forgot-password" id="showForgot">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Login</button>
+                    </form>
+                    <div class="form-toggle">
+                        <p>Don't have an account? <a href="#" class="register-link" id="showRegister">Register now</a>
+                        </p>
                     </div>
-                    <a href="#" class="forgot-password">Forgot password?</a>
                 </div>
-                <button type="submit" class="cta-button" style="width: 100%;">Login</button>
-            </form>
-            <p style="margin-top: 30px;">Don't have an account? <a href="#" style="color: var(--ferrari-red);">Register now</a></p>
+
+                <!-- Registration Form -->
+                <div class="form-page" id="registerPage">
+                    <h2>Create Your MyFerrari Account</h2>
+                    <p>Join the Ferrari family and enjoy exclusive benefits and services.</p>
+                    <form class="register-form" id="registerForm">
+                        <div class="form-group">
+                            <label for="reg-email">Email Address</label>
+                            <input type="email" id="reg-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-username">Username</label>
+                            <input type="text" id="reg-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Password</label>
+                            <input type="password" id="reg-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-confirm">Confirm Password</label>
+                            <input type="password" id="reg-confirm" required>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Register</button>
+                    </form>
+                    <div class="form-toggle">
+                        <p>Already have an account? <a href="#" class="login-link" id="showLogin">Login here</a></p>
+                    </div>
+                </div>
+
+                <!-- Forgot Password Form -->
+                <div class="form-page" id="forgotPage">
+                    <h2>Reset Your Password</h2>
+                    <p>Enter your email address and we'll send you a link to reset your password.</p>
+                    <form class="forgot-form" id="forgotForm">
+                        <div class="form-group">
+                            <label for="forgot-email">Email Address</label>
+                            <input type="email" id="forgot-email" required>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Send Reset Link</button>
+                    </form>
+                    <div class="form-toggle">
+                        <p>Remember your password? <a href="#" class="login-link" id="showLoginFromForgot">Login
+                                here</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1481,9 +1635,9 @@
                     <option value="500000">Over $500,000</option>
                 </select>
             </div>
-            <button class="search-btn">Search</button>
+            <button class="search-btn" id="searchBtn">Search</button>
         </div>
-        <div class="models-grid">
+        <div class="models-grid" id="preownedGrid">
             <!-- Pre-owned cars would be dynamically loaded here -->
             <div class="model-card fade-in">
                 <div class="model-image">
@@ -1515,7 +1669,8 @@
             </div>
             <div class="model-card fade-in delay-1">
                 <div class="model-image">
-                    <img src="https://www.pushstart.it/it/test-drive/ferrari-f8-tributo-spider/images/1f8Spider14-p-c_hu_fa1a9bd6ed44e214.jpg" alt="Pre-owned Ferrari">
+                    <img src="https://www.pushstart.it/it/test-drive/ferrari-f8-tributo-spider/images/1f8Spider14-p-c_hu_fa1a9bd6ed44e214.jpg"
+                        alt="Pre-owned Ferrari">
                 </div>
                 <div class="model-info">
                     <h3>F8 Tributo (2020)</h3>
@@ -1543,7 +1698,8 @@
             </div>
             <div class="model-card fade-in delay-2">
                 <div class="model-image">
-                    <img src="https://hips.hearstapps.com/hmg-prod/images/2021-ferrari-portofino-m-110-1621623715.jpg" alt="Pre-owned Ferrari">
+                    <img src="https://hips.hearstapps.com/hmg-prod/images/2021-ferrari-portofino-m-110-1621623715.jpg"
+                        alt="Pre-owned Ferrari">
                 </div>
                 <div class="model-info">
                     <h3>Portofino (2021)</h3>
@@ -1578,26 +1734,18 @@
             <h2>Ferrari Dealers</h2>
         </div>
         <div class="dealer-map fade-in">
-            <!-- <div class="map-placeholder" id="map">
-                <i class="fas fa-map-marker-alt" style="font-size: 3rem; margin-right: 15px;"></i>
-                <span>Interactive Dealer Map Would Appear Here</span>
-            </div> -->
-            <div class="dealer-map fade-in">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=YOUR_EMBED_CODE_HERE" 
-                    width="100%" 
-                    height="400px" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256038843!2d-73.9614149240174!3d40.7697969713886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258f9cfcb250d%3A0xdb5700c5e1d74817!2sFerrari%20of%20Manhattan!5e0!3m2!1sen!2sus!4v1712345678901!5m2!1sen!2sus"
+                width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
         <div class="dealer-list">
             <div class="dealer-card fade-in">
                 <h3>Ferrari Beverly Hills</h3>
                 <div class="dealer-info">
-                    <p>Located in the heart of Los Angeles, our Beverly Hills dealership offers the full range of Ferrari models and exceptional service.</p>
+                    <p>Located in the heart of Los Angeles, our Beverly Hills dealership offers the full range of
+                        Ferrari models and exceptional service.</p>
                 </div>
                 <div class="dealer-contacts">
                     <div class="contact-item">
@@ -1617,7 +1765,8 @@
             <div class="dealer-card fade-in delay-1">
                 <h3>Ferrari New York</h3>
                 <div class="dealer-info">
-                    <p>Our flagship Manhattan location provides an exclusive Ferrari experience with state-of-the-art facilities.</p>
+                    <p>Our flagship Manhattan location provides an exclusive Ferrari experience with state-of-the-art
+                        facilities.</p>
                 </div>
                 <div class="dealer-contacts">
                     <div class="contact-item">
@@ -1637,7 +1786,8 @@
             <div class="dealer-card fade-in delay-2">
                 <h3>Ferrari Miami</h3>
                 <div class="dealer-info">
-                    <p>Serving South Florida with the latest Ferrari models and a dedicated service center for your Prancing Horse.</p>
+                    <p>Serving South Florida with the latest Ferrari models and a dedicated service center for your
+                        Prancing Horse.</p>
                 </div>
                 <div class="dealer-contacts">
                     <div class="contact-item">
@@ -1664,23 +1814,24 @@
         </div>
         <div class="recall-container fade-in">
             <h2>Ferrari Recall Information</h2>
-            <p>Ferrari is committed to the safety and satisfaction of our customers. Check here for any recall information that may affect your vehicle.</p>
+            <p>Ferrari is committed to the safety and satisfaction of our customers. Check here for any recall
+                information that may affect your vehicle.</p>
             <div class="vin-check">
-                <input type="text" placeholder="Enter your VIN to check for recalls">
-                <button>Check</button>
+                <input type="text" id="vinInput" placeholder="Enter your VIN to check for recalls">
+                <button id="checkVinBtn">Check</button>
             </div>
-            <div class="recall-list">
-                <div class="recall-item">
+            <div class="recall-list" id="recallList">
+                <div class="recall-item" data-vin="SF90">
                     <h4>Recall #2023-12345</h4>
                     <p>Potential issue with brake booster in certain 2020-2022 models.</p>
                     <p class="recall-date">Issued: May 15, 2023</p>
                 </div>
-                <div class="recall-item">
+                <div class="recall-item" data-vin="F8">
                     <h4>Recall #2022-98765</h4>
                     <p>Software update required for hybrid system in SF90 Stradale vehicles.</p>
                     <p class="recall-date">Issued: November 3, 2022</p>
                 </div>
-                <div class="recall-item">
+                <div class="recall-item" data-vin="296">
                     <h4>Recall #2022-54321</h4>
                     <p>Possible fuel line connection issue in certain 2019-2021 V8 models.</p>
                     <p class="recall-date">Issued: August 12, 2022</p>
@@ -1695,12 +1846,12 @@
             <h2>Technical Information</h2>
         </div>
         <div class="tech-tabs fade-in">
-            <button class="tech-tab active" data-tab="specs">Specifications</button>
+            <!-- <button class="tech-tab active" data-tab="specs">Specifications</button> -->
             <button class="tech-tab" data-tab="manuals">Manuals</button>
             <button class="tech-tab" data-tab="software">Software Updates</button>
         </div>
         <div class="tech-content">
-            <div class="tech-panel active" id="specs">
+            <!-- <div class="tech-panel active" id="specs">
                 <h3>Technical Specifications</h3>
                 <table class="specs-table">
                     <tr>
@@ -1753,8 +1904,8 @@
                         <td>340 km/h</td>
                     </tr>
                 </table>
-            </div>
-            <div class="tech-panel" id="manuals">
+            </div> -->
+            <div class="tech-panel" id="manuals" active id="specs">
                 <h3>Owner's Manuals</h3>
                 <p>Download the latest owner's manuals for your Ferrari vehicle.</p>
                 <div class="downloads">
@@ -1847,7 +1998,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </section>
 
@@ -1855,39 +2005,55 @@
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <a href="racing.html"><h3>Racing</h3></a>
+                <a href="Collection.html">
+                    <h3>Collection</h3>
+                </a>
                 <ul class="footer-links">
-                    
+                    <li> <a href="men_Collection.html">Men</a></li>
+                    <li><a href="Shoes_Collection.html">Shoes</a></li>
+                    <li> <a href="kids.html">Kids</a></li>
+                    <li> <a href="gifts.html">Gift</a></li>
+                    <li><a href="overview.html">Collectibles</a></li>
+                    <li> <a href="home.html">shop Now</a></li>
+                    <li><a href="third.html">News</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <a href="sport.html"><h3>sport</h3></a>
+                <a href="sport.html">
+                    <h3>Sport</h3>
+                </a>
                 <ul class="footer-links">
-                   
+                    <li> <a href="third.html">News</a></li>
+                    <li> <a href="forth.html">Overview</a> </li>
+                    <li><a href="six.html">History</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <a href="main.html">
+                    <h3>Experiences</h3>
+                </a>
+                <ul class="footer-links">
+                    <li><a href="fifth.html">Driver</a></li>
+                    <li><a href="forth.html">LATEST NEWS</a></li>
+                    <li> <a href="six.html">History</a></li>
+                    <li> <a href="Racing_Page.html">Race</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <a href="men_Collection.html"><h3>Collection</h3></a>
+                <a href="Collection.html">
+                    <h3>About Us</h3>
+                </a>
                 <ul class="footer-links">
-                   
+                    <li> <a href="corparate.html">CORPORATE</a></li>
+                    <li><a href="Sustainability.html">Sustainability</a></li>
+                    <li> <a href="media-center.html">Search</a></li>
+                    <li> <a href="join-us.html">Investors</a></li>
+                    <li> <a href="third.html">News</a></li>
+                    <li> <a href="home.html">shop Now</a></li>
+                    <li><a href="calender.html">calender</a></li>
                 </ul>
             </div>
-<!--             <div class="footer-column">
-               <a href="main.html"><h3>Experiences</h3></a> 
-                <ul class="footer-links">
-                   
-                </ul>
-            </div> -->
-            <div class="footer-column">
-                <a href="Sustainability.html"><h3>About Us</h3></a>
-                <div class="social-links">
-                   
-                   
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-          
         </div>
     </footer>
 
@@ -1918,6 +2084,18 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = '';
+
+                // Scroll to section
+                const targetId = link.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
             });
         });
 
@@ -1952,11 +2130,11 @@
             option.addEventListener('click', () => {
                 colorOptions.forEach(opt => opt.classList.remove('selected'));
                 option.classList.add('selected');
-                
+
                 const color = option.getAttribute('data-color');
                 let colorName = '';
-                
-                switch(color) {
+
+                switch (color) {
                     case 'red':
                         colorName = 'Rosso Corsa';
                         carModel.style.backgroundImage = 'url("https://hips.hearstapps.com/hmg-prod/images/2024-ferrari-812-gts-101-64caae4038b21.jpeg?crop=0.531xw:0.471xh;0.135xw,0.434xh&resize=640:*")';
@@ -1975,7 +2153,6 @@
                         break;
                     case 'yellow':
                         colorName = 'Giallo Modena';
-                        // carModel.style.backgroundImage = 'URL("Images\f-5.webp")';
                         carModel.style.backgroundImage = 'url("https://robbreport.com/wp-content/uploads/2023/09/giallomodena01.jpg")';
                         break;
                     case 'gray':
@@ -1983,7 +2160,7 @@
                         carModel.style.backgroundImage = 'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeiXrpotRaRwZxz8Q3VTH3JymZ4xounRM-vA&s")';
                         break;
                 }
-                
+
                 summaryItems[1].textContent = colorName;
                 updatePrice();
             });
@@ -1994,11 +2171,11 @@
             option.addEventListener('click', () => {
                 wheelOptions.forEach(opt => opt.classList.remove('selected'));
                 option.classList.add('selected');
-                
+
                 const wheel = option.getAttribute('data-wheel');
                 let wheelName = '';
-                
-                switch(wheel) {
+
+                switch (wheel) {
                     case 'standard':
                         wheelName = 'Standard Alloy';
                         break;
@@ -2009,7 +2186,7 @@
                         wheelName = 'Carbon Fiber';
                         break;
                 }
-                
+
                 summaryItems[2].textContent = wheelName;
                 updatePrice();
             });
@@ -2020,11 +2197,11 @@
             option.addEventListener('click', () => {
                 interiorOptions.forEach(opt => opt.classList.remove('selected'));
                 option.classList.add('selected');
-                
+
                 const interior = option.getAttribute('data-interior');
                 let interiorName = '';
-                
-                switch(interior) {
+
+                switch (interior) {
                     case 'leather':
                         interiorName = 'Premium Leather';
                         break;
@@ -2035,7 +2212,7 @@
                         interiorName = 'Carbon Fiber';
                         break;
                 }
-                
+
                 summaryItems[3].textContent = interiorName;
                 updatePrice();
             });
@@ -2045,7 +2222,7 @@
         function updatePrice() {
             let basePrice = 625000;
             let optionsPrice = 0;
-            
+
             // Wheel price adjustments
             const selectedWheel = document.querySelector('.wheel-option.selected');
             if (selectedWheel) {
@@ -2053,7 +2230,7 @@
                 if (wheel === 'sport') optionsPrice += 15000;
                 if (wheel === 'carbon') optionsPrice += 30000;
             }
-            
+
             // Interior price adjustments
             const selectedInterior = document.querySelector('.interior-option.selected');
             if (selectedInterior) {
@@ -2061,7 +2238,7 @@
                 if (interior === 'alcantara') optionsPrice += 10000;
                 if (interior === 'carbon') optionsPrice += 25000;
             }
-            
+
             summaryItems[4].textContent = `$${basePrice.toLocaleString()}`;
             summaryItems[5].textContent = `$${optionsPrice.toLocaleString()}`;
             totalPrice.textContent = `$${(basePrice + optionsPrice).toLocaleString()}`;
@@ -2074,10 +2251,10 @@
         techTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const tabId = tab.getAttribute('data-tab');
-                
+
                 techTabs.forEach(t => t.classList.remove('active'));
                 techPanels.forEach(p => p.classList.remove('active'));
-                
+
                 tab.classList.add('active');
                 document.getElementById(tabId).classList.add('active');
             });
@@ -2085,12 +2262,12 @@
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
+
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
@@ -2108,7 +2285,7 @@
             fadeElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
-                
+
                 if (elementTop < windowHeight - 100) {
                     element.style.opacity = 1;
                     element.style.transform = 'translateY(0)';
@@ -2119,55 +2296,244 @@
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('load', checkScroll);
 
-        // Pre-owned search functionality
-        const searchBtn = document.querySelector('.preowned-section .search-btn');
-        searchBtn.addEventListener('click', () => {
-            alert('Search functionality would filter pre-owned inventory based on selected criteria in a real implementation.');
+        // Form switching functionality
+        const loginPage = document.getElementById('loginPage');
+        const registerPage = document.getElementById('registerPage');
+        const forgotPage = document.getElementById('forgotPage');
+
+        const showRegister = document.getElementById('showRegister');
+        const showLogin = document.getElementById('showLogin');
+        const showForgot = document.getElementById('showForgot');
+        const showLoginFromForgot = document.getElementById('showLoginFromForgot');
+
+        showRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginPage.classList.remove('active');
+            registerPage.classList.add('active');
+            forgotPage.classList.remove('active');
         });
 
-        // VIN check functionality
-        const vinCheckBtn = document.querySelector('.vin-check button');
-        vinCheckBtn.addEventListener('click', () => {
-            const vinInput = document.querySelector('.vin-check input');
-            if (vinInput.value.trim() === '') {
-                alert('Please enter your VIN to check for recalls.');
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerPage.classList.remove('active');
+            loginPage.classList.add('active');
+            forgotPage.classList.remove('active');
+        });
+
+        showForgot.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginPage.classList.remove('active');
+            registerPage.classList.remove('active');
+            forgotPage.classList.add('active');
+        });
+
+        showLoginFromForgot.addEventListener('click', (e) => {
+            e.preventDefault();
+            forgotPage.classList.remove('active');
+            loginPage.classList.add('active');
+            registerPage.classList.remove('active');
+        });
+
+        // Form submissions with validation and feedback
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const forgotForm = document.getElementById('forgotForm');
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                showAlert('Please fill in all fields', 'error');
+                return;
+            }
+
+            // Simulate successful login
+            showAlert('Login successful!', 'success');
+            loginForm.reset();
+        });
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('reg-email').value;
+            const username = document.getElementById('reg-username').value;
+            const password = document.getElementById('reg-password').value;
+            const confirm = document.getElementById('reg-confirm').value;
+
+            if (!email || !username || !password || !confirm) {
+                showAlert('Please fill in all fields', 'error');
+                return;
+            }
+
+            if (password !== confirm) {
+                showAlert('Passwords do not match!', 'error');
+                return;
+            }
+
+            if (password.length < 8) {
+                showAlert('Password must be at least 8 characters', 'error');
+                return;
+            }
+
+            // Simulate successful registration
+            showAlert('Registration successful!', 'success');
+            registerForm.reset();
+
+            // Switch back to login form
+            setTimeout(() => {
+                registerPage.classList.remove('active');
+                loginPage.classList.add('active');
+            }, 1500);
+        });
+
+        forgotForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('forgot-email').value;
+
+            if (!email) {
+                showAlert('Please enter your email', 'error');
+                return;
+            }
+
+            // Simulate password reset
+            showAlert('If an account exists with this email, a password reset link has been sent.', 'success');
+            forgotForm.reset();
+
+            // Switch back to login form
+            setTimeout(() => {
+                forgotPage.classList.remove('active');
+                loginPage.classList.add('active');
+            }, 1500);
+        });
+
+        // Helper function to show alerts
+        function showAlert(message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `form-alert ${type}`;
+            alertDiv.textContent = message;
+
+            const formContainer = document.querySelector('.form-container');
+            formContainer.prepend(alertDiv);
+
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 3000);
+        }
+
+        // Pre-owned search functionality
+        const searchBtn = document.getElementById('searchBtn');
+        const preownedGrid = document.getElementById('preownedGrid');
+
+        searchBtn.addEventListener('click', () => {
+            const modelFilter = document.getElementById('model').value;
+            const yearFilter = document.getElementById('year').value;
+            const priceFilter = document.getElementById('price').value;
+
+            // In a real implementation, this would filter actual data from a server
+            console.log('Search filters:', { modelFilter, yearFilter, priceFilter });
+
+            // Simulate loading new results
+            preownedGrid.innerHTML = '';
+            preownedGrid.classList.add('loading');
+
+            setTimeout(() => {
+                // This would be replaced with actual filtered data from the server
+                preownedGrid.innerHTML = `
+                    <div class="model-card fade-in">
+                        <div class="model-image">
+                            <img src="https://i.ytimg.com/vi/VuzhZflUEjk/maxresdefault.jpg" alt="Pre-owned Ferrari">
+                        </div>
+                        <div class="model-info">
+                            <h3>812 Superfast (2019)</h3>
+                            <p>Low mileage, one owner, full service history. Rosso Corsa with Crema interior.</p>
+                            <div class="model-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span>5,200 mi</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>800 CV</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-gas-pump"></i>
+                                    <span>V12</span>
+                                </div>
+                            </div>
+                            <div class="model-price">$349,900</div>
+                            <div class="model-links">
+                                <a href="#" class="configure-btn">Inquire</a>
+                                <a href="#" class="details-btn">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="model-card fade-in delay-1">
+                        <div class="model-image">
+                            <img src="https://www.pushstart.it/it/test-drive/ferrari-f8-tributo-spider/images/1f8Spider14-p-c_hu_fa1a9bd6ed44e214.jpg" alt="Pre-owned Ferrari">
+                        </div>
+                        <div class="model-info">
+                            <h3>F8 Tributo (2020)</h3>
+                            <p>Certified Pre-Owned, Nero Daytona with Rosso interior, carbon fiber package.</p>
+                            <div class="model-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span>8,700 mi</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>720 CV</span>
+                                </div>
+                                <div class="spec-item">
+                                    <i class="fas fa-gas-pump"></i>
+                                    <span>V8 Turbo</span>
+                                </div>
+                            </div>
+                            <div class="model-price">$289,500</div>
+                            <div class="model-links">
+                                <a href="#" class="configure-btn">Inquire</a>
+                                <a href="#" class="details-btn">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                preownedGrid.classList.remove('loading');
+                checkScroll(); // Re-trigger animations for new elements
+            }, 500);
+        });
+
+        // Recall VIN check functionality
+        const vinInput = document.getElementById('vinInput');
+        const checkVinBtn = document.getElementById('checkVinBtn');
+        const recallItems = document.querySelectorAll('.recall-item');
+
+        checkVinBtn.addEventListener('click', () => {
+            const vin = vinInput.value.trim().toUpperCase();
+
+            if (!vin) {
+                showAlert('Please enter your VIN to check for recalls.', 'error');
+                return;
+            }
+
+            // Hide all recall items first
+            recallItems.forEach(item => item.classList.remove('active'));
+
+            // Simulate checking VIN against database
+            // In a real implementation, this would be done server-side
+            if (vin.includes('SF90')) {
+                document.querySelector('.recall-item[data-vin="SF90"]').classList.add('active');
+            } else if (vin.includes('F8')) {
+                document.querySelector('.recall-item[data-vin="F8"]').classList.add('active');
+            } else if (vin.includes('296')) {
+                document.querySelector('.recall-item[data-vin="296"]').classList.add('active');
             } else {
-                alert('In a real implementation, this would check the VIN against Ferrari\'s recall database and display results.');
+                showAlert('No recalls found for this VIN or the VIN is not recognized.', 'error');
             }
         });
 
-        // ---------------------map--------------------
-        
-    function initMap() {
-        var locations = [
-            { lat: 34.0674, lng: -118.4012, title: "Ferrari Beverly Hills" },
-            { lat: 40.7698, lng: -73.9601, title: "Ferrari New York" }
-        ];
-
-        var map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 5,
-            center: { lat: 37.7749, lng: -95.4194 } // Center of USA
-        });
-
-        locations.forEach(function (location) {
-            new google.maps.Marker({
-                position: { lat: location.lat, lng: location.lng },
-                map: map,
-                title: location.title
-            });
-        });
-    }
-
-
-        // Login form submission
-        const loginForm = document.querySelector('.login-form');
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('In a real implementation, this would authenticate the user and grant access to their MyFerrari account.');
-        });
+        // Initialize with first color selected
+        document.querySelector('.color-option.selected').click();
     </script>
-    <script async defer 
-    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-</script>
 </body>
+
 </html>
